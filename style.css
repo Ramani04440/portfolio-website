@@ -1,0 +1,119 @@
+
+:root {
+    --primary: #00f2fe;
+    --secondary: #4facfe;
+    --dark: #050505;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --text-p: #e0e0e0;
+    --text-s: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: var(--dark);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+
+/* Glass Navigation */
+.glass-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 15px 30px;
+    z-index: 1000;
+}
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 800; letter-spacing: 2px; font-size: 1.2rem; }
+.logo span { color: var(--primary); }
+.links { display: flex; list-style: none; gap: 30px; }
+.links a { text-decoration: none; color: var(--text-p); font-size: 0.9rem; transition: 0.3s; }
+.links a:hover { color: var(--primary); }
+.contact-btn { background: var(--primary); color: black !important; padding: 8px 20px; border-radius: 20px; font-weight: 600; }
+
+/* Hero */
+.hero-v2 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.tech-stack-floater {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 5px 15px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    background: rgba(0, 242, 254, 0.05);
+}
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 20px; }
+.gradient-text {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.typewriter { font-size: 1.5rem; color: var(--text-s); font-family: 'JetBrains Mono', monospace; }
+
+/* Projects */
+.section-num { color: var(--primary); font-size: 1rem; margin-bottom: 10px; }
+.section-head { font-size: 2.5rem; margin-bottom: 50px; }
+.project-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.project-v2-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 24px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.project-v2-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: scale(1.02);
+    border-color: var(--primary);
+}
+.p-category { font-size: 0.7rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+.p-tags { margin-top: 20px; display: flex; gap: 10px; }
+.p-tags span { font-size: 0.7rem; background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 4px; }
+
+/* Buttons */
+.cta-group { margin-top: 40px; display: flex; gap: 20px; }
+.main-btn { padding: 15px 35px; background: white; color: black; text-decoration: none; border-radius: 12px; font-weight: 600; }
+.ghost-btn { padding: 15px 35px; border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 12px; }
+
+/* Stats */
+.stats-grid { display: flex; gap: 40px; margin-top: 40px; }
+.stat-item h4 { color: var(--primary); font-size: 1.5rem; }
+.stat-item p { color: var(--text-s); font-size: 0.9rem; }
+
+/* Scroll Indicator */
+.scroll-indicator { position: absolute; bottom: 30px; }
+.mouse { width: 25px; height: 40px; border: 2px solid var(--text-s); border-radius: 20px; position: relative; }
+.mouse::after { content: ''; width: 4px; height: 8px; background: var(--primary); position: absolute; left: 50%; transform: translateX(-50%); top: 10px; border-radius: 2px; animation: scroll 2s infinite; }
+
+@keyframes scroll { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 20px; } }
+
+@media (max-width: 768px) {
+    .project-showcase { grid-template-columns: 1fr; }
+    .links { display: none; }
+}
