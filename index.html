@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramani S | Portfolio v2.0</title>
+    <title>Ramani S | CSE Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
-    <!-- Advanced Background -->
     <div id="particles-js"></div>
 
     <nav class="glass-nav">
@@ -17,9 +16,9 @@
             <div class="logo">RAMANI<span>_S</span></div>
             <ul class="links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#contact" class="contact-btn">Hire Me</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact" class="contact-btn">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -27,72 +26,108 @@
     <header id="home" class="hero-v2">
         <div class="hero-text">
             <div class="tech-stack-floater">JAVA • PYTHON • SQL • ML</div>
-            <h1>Building the <span class="gradient-text">Future</span> with Code</h1>
+            <h1>Building with <span class="gradient-text">Precision</span></h1>
             <p class="typewriter">I am a <span id="type-target"></span></p>
             <div class="cta-group">
-                <a href="#projects" class="main-btn">Explore Projects</a>
-                <a href="#contact" class="ghost-btn">Get in Touch</a>
+                <a href="#experience" class="main-btn">View Experience</a>
+                <a href="#contact" class="ghost-btn">Let's Talk</a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
         </div>
     </header>
 
-    <section id="about" class="reveal">
-        <div class="container">
-            <h2 class="section-num">01.</h2>
-            <h3 class="section-head">About My Journey</h3>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Currently a Pre-Final Year CSE student at <strong>Sri Sairam Engineering College</strong>, I specialize in architecting scalable solutions. My passion lies in <strong>Machine Learning</strong> and <strong>Full-Stack Development</strong>.</p>
-                    <div class="stats-grid">
-                        <div class="stat-item"><h4>PGPA</h4><p>Rank #1</p></div>
-                        <div class="stat-item"><h4>Projects</h4><p>10+ Completed</p></div>
-                        <div class="stat-item"><h4>Awards</h4><p>IEEE Best Vol.</p></div>
+    <section id="experience" class="reveal container">
+        <h2 class="section-num">01.</h2>
+        <h3 class="section-head">Professional Experience <span class="hint">(Click cards to flip)</span></h3>
+        
+        <div class="experience-grid">
+            
+            <!-- ONEYES INFOTECH CARD -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-content">
+                            <div class="company-logo">OY</div>
+                            <h4>OneYes Infotech Solutions</h4>
+                            <p class="project-name">Online Examination System</p>
+                            <span class="location">Anna Nagar, Chennai</span>
+                            <span class="flip-hint">Details & Credentials ↻</span>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="back-content">
+                            <h5>Key Achievements</h5>
+                            <ul>
+                                <li>Tri-role system (Admin/Faculty/Student) for 100+ users.</li>
+                                <li>Reduced manual assessment effort by <strong>70%</strong>.</li>
+                                <li>Engineered AI + Human data delivery workflows.</li>
+                            </ul>
+                            <div class="action-links">
+                                <a href="assets/oneyes-offer.pdf" target="_blank" title="Offer Letter">📄</a>
+                                <a href="assets/oneyes-cert.pdf" target="_blank" title="Certificate">📜</a>
+                                <a href="#" target="_blank" title="Demo Video">▶️</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- VULTURE MANAGEMENT CARD -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-content">
+                            <div class="company-logo">VM</div>
+                            <h4>Vulture Management Wings</h4>
+                            <p class="project-name">Driving School System</p>
+                            <span class="location">Anna Nagar, Chennai</span>
+                            <span class="flip-hint">Details & Credentials ↻</span>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="back-content">
+                            <h5>Key Achievements</h5>
+                            <ul>
+                                <li>Automated registration/scheduling, saving <strong>60%</strong> overhead.</li>
+                                <li>Built 4+ responsive modules with RESTful APIs.</li>
+                                <li>Git-based version control in professional SDLC.</li>
+                            </ul>
+                            <div class="action-links">
+                                <a href="assets/vulture-offer.pdf" target="_blank" title="Offer Letter">📄</a>
+                                <a href="assets/vulture-cert.pdf" target="_blank" title="Certificate">📜</a>
+                                <a href="#" target="_blank" title="Demo Video">▶️</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="projects" class="reveal">
-        <div class="container">
-            <h2 class="section-num">02.</h2>
-            <h3 class="section-head">Selected Works</h3>
-            <div class="project-showcase">
-                <!-- Project 1 -->
-                <div class="project-v2-card">
-                    <div class="project-content">
-                        <span class="p-category">AI / Healthcare</span>
-                        <h3>Skin Cancer Detection</h3>
-                        <p>Deep Learning model utilizing CNNs to detect malignant cells with 94%+ accuracy. Built with Python and TensorFlow.</p>
-                        <div class="p-tags"><span>Python</span><span>ML</span><span>Flask</span></div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-v2-card">
-                    <div class="project-content">
-                        <span class="p-category">Web Systems</span>
-                        <h3>Smart Farm Portal</h3>
-                        <p>A full-stack ecosystem for farmers to monitor soil health and market prices in real-time.</p>
-                        <div class="p-tags"><span>React</span><span>Node.js</span><span>MySQL</span></div>
-                    </div>
-                </div>
+    <section id="skills" class="reveal container">
+        <h2 class="section-num">02.</h2>
+        <h3 class="section-head">Technical Arsenal</h3>
+        <div class="skills-showcase">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <div class="skill-tags"><span>Java</span><span>Python</span><span>JavaScript</span><span>SQL</span></div>
+            </div>
+            <div class="skill-category">
+                <h4>Frameworks & Tools</h4>
+                <div class="skill-tags"><span>React.js</span><span>Node.js</span><span>Git</span><span>AWS</span><span>OCI AI</span></div>
             </div>
         </div>
     </section>
 
     <footer id="contact">
         <div class="footer-glass">
-            <h2>Ready to start a project?</h2>
+            <h2>Contact Ramani S</h2>
             <a href="mailto:ramani04122005@gmail.com" class="email-link">ramani04122005@gmail.com</a>
             <div class="social-row">
-                <a href="#">GitHub</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">Twitter</a>
+                <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank">LinkedIn</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
             </div>
-            <p>© 2026 Crafted by Ramani S</p>
+            <p>© 2026 Ramani S | Built with HTML, CSS & JS</p>
         </div>
     </footer>
 
