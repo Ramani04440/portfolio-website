@@ -25,7 +25,7 @@ Coming Soon
 - HTML5
 - CSS3
 - JavaScript
-- Vercel (Deployment)
+- Vercel
 - Git & GitHub
 
 ## 📂 Project Structure
