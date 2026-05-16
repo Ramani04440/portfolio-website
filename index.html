@@ -6,6 +6,7 @@
     <title>Ramani S | CSE Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
@@ -110,63 +111,161 @@
 
     <section id="skills" class="reveal container">
         <h3 class="section-head">Technical Arsenal</h3>
-        <div class="skills-showcase">
-            <div class="skill-category">
-                <div class="category-header">
-                    <h4>💻 Languages</h4>
-                    <span class="category-count">4</span>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">SQL</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="category-header">
-                    <h4>⚙️ Frameworks & Libraries</h4>
-                    <span class="category-count">6</span>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">React.js</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Express.js</span>
-                    <span class="skill-tag">Spring Boot</span>
-                    <span class="skill-tag">TensorFlow</span>
-                    <span class="skill-tag">Scikit-learn</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="category-header">
-                    <h4>🛠️ Tools & Platforms</h4>
-                    <span class="category-count">8</span>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">AWS</span>
-                    <span class="skill-tag">OCI AI</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Firebase</span>
-                    <span class="skill-tag">Postman</span>
+        
+        <div class="skills-grid">
+            <!-- Languages Section -->
+            <div class="skill-group">
+                <h4 class="group-title">💻 Languages</h4>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-logo java">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <p class="skill-name">Java</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo python">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <p class="skill-name">Python</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo javascript">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <p class="skill-name">JavaScript</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo sql">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <p class="skill-name">SQL</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <div class="category-header">
-                    <h4>📊 Specializations</h4>
-                    <span class="category-count">5</span>
+            <!-- Frameworks & Libraries Section -->
+            <div class="skill-group">
+                <h4 class="group-title">⚙️ Frameworks & Libraries</h4>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-logo react">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <p class="skill-name">React.js</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo node">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <p class="skill-name">Node.js</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo express">
+                            <span class="text-logo">Ex</span>
+                        </div>
+                        <p class="skill-name">Express.js</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo spring">
+                            <span class="text-logo">SB</span>
+                        </div>
+                        <p class="skill-name">Spring Boot</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo tensorflow">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <p class="skill-name">TensorFlow</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo sklearn">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <p class="skill-name">Scikit-learn</p>
+                    </div>
                 </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Full Stack Development</span>
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">Data Analysis</span>
-                    <span class="skill-tag">RESTful APIs</span>
-                    <span class="skill-tag">Database Design</span>
+            </div>
+
+            <!-- Tools & Platforms Section -->
+            <div class="skill-group">
+                <h4 class="group-title">🛠️ Tools & Platforms</h4>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-logo git">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+                        <p class="skill-name">Git</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo docker">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <p class="skill-name">Docker</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo aws">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <p class="skill-name">AWS</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo oci">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <p class="skill-name">OCI AI</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo mysql">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <p class="skill-name">MySQL</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo mongodb">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <p class="skill-name">MongoDB</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo firebase">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <p class="skill-name">Firebase</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo postman">
+                            <span class="text-logo">P</span>
+                        </div>
+                        <p class="skill-name">Postman</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specializations Section -->
+            <div class="skill-group">
+                <h4 class="group-title">📊 Specializations</h4>
+                <div class="skills-container specialization-container">
+                    <div class="spec-item">
+                        <div class="spec-icon">🌐</div>
+                        <p>Full Stack</p>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">🤖</div>
+                        <p>ML & AI</p>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">📈</div>
+                        <p>Data Analysis</p>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">🔌</div>
+                        <p>RESTful APIs</p>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">🗄️</div>
+                        <p>Database</p>
+                    </div>
                 </div>
             </div>
         </div>
