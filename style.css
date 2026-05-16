@@ -350,40 +350,78 @@ h1 {
     transform: translateY(-3px); 
 }
 
-/* Skills Showcase */
+/* Skills Showcase - Improved */
 .skills-showcase {
-    margin-top: 30px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
 }
 
 .skill-category { 
-    margin-bottom: 40px; 
+    margin-bottom: 0;
+    background: rgba(0, 242, 254, 0.03);
+    border: 1px solid rgba(0, 242, 254, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    background: rgba(0, 242, 254, 0.05);
+    border-color: rgba(0, 242, 254, 0.2);
+    transform: translateY(-5px);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .skill-category h4 {
-    font-size: 1.3rem;
-    color: var(--secondary);
-    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.category-count {
+    background: rgba(0, 242, 254, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .skill-tags { 
     display: flex; 
-    gap: 15px; 
+    gap: 12px; 
     flex-wrap: wrap; 
 }
 
-.skill-tags span { 
-    background: rgba(255,255,255,0.03); 
-    border: 1px solid rgba(255,255,255,0.08); 
-    padding: 10px 24px; 
-    border-radius: 12px; 
-    font-size: 0.95rem; 
+.skill-tag { 
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
     font-family: 'JetBrains Mono', monospace;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    display: inline-block;
+    white-space: nowrap;
+    color: var(--text-p);
 }
 
-.skill-tags span:hover {
-    background: rgba(0, 242, 254, 0.1);
+.skill-tag:hover {
+    background: rgba(0, 242, 254, 0.15);
     border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
 }
 
 /* Layout Structural Design */
@@ -466,6 +504,10 @@ footer p {
     .flip-card {
         height: 420px;
     }
+
+    .skills-showcase {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) { 
@@ -502,6 +544,10 @@ footer p {
     
     .section-head {
         font-size: 2rem;
+    }
+
+    .skills-showcase {
+        grid-template-columns: 1fr;
     }
     
     footer {
@@ -560,6 +606,15 @@ footer p {
     .section-head {
         font-size: 1.6rem;
         margin-bottom: 30px;
+    }
+
+    .skills-showcase {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .skill-category {
+        padding: 20px;
     }
     
     footer h2 {
