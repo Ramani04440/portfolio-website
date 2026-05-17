@@ -1,7 +1,7 @@
 # portfolio-website
 # Personal Portfolio Website
 
-A modern and responsive personal portfolio website built using HTML, CSS, and JavaScript to showcase my skills, projects, achievements, certifications, and leadership experience.
+A modern and responsive personal portfolio website built using HTML, CSS, and JavaScript to showcase my skills, projects, Achievements, certifications, and leadership experience.
 
 ## 🌐 Live Demo
 Coming Soon
@@ -26,7 +26,7 @@ Coming Soon
 - CSS3
 - JavaScript
 - Vercel
-- Git & GitHub
+- Git , GitHub
 
 ## 📂 Project Structure
 
