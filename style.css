@@ -350,7 +350,7 @@ h1 {
     transform: translateY(-3px); 
 }
 
-/* ===== NEW CREATIVE SKILLS SECTION ===== */
+/* ===== IMPROVED SKILLS SECTION ===== */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -429,6 +429,12 @@ h1 {
 
 .skill-item:hover .skill-logo::before {
     left: 100%;
+}
+
+.skill-logo svg {
+    width: 70%;
+    height: 70%;
+    stroke: currentColor;
 }
 
 /* Language Logos */
