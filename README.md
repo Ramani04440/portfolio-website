@@ -26,7 +26,7 @@ Coming Soon
 - CSS3
 - JavaScript
 - Vercel
-- Git , GitHub
+- GitHub
 
 ## 📂 Project Structure
 
