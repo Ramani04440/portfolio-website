@@ -3,730 +3,1040 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramani S | Developer Portfolio</title>
-    <meta name="description" content="Personal portfolio of Ramani S, a pre-final year Computer Science Engineering student specializing in Software Engineering, Machine Learning, and Full-Stack Web Development.">
-    <!-- Style Sheets -->
+    <title>Ramani S - Interactive 3D Portfolio</title>
+    <meta name="description" content="Interactive 3D portfolio with AI assistant - Ramani S, CS Engineering Student & Full Stack Developer">
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- ScrollReveal Library -->
-    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
+    <!-- 3D Canvas Background -->
+    <canvas id="canvas3d"></canvas>
 
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-
-    <!-- Background Radial Glows for Premium Ambiance -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
-
-    <!-- Sticky Glass Navbar -->
-    <nav class="glass-nav" id="navbar">
-        <div class="nav-content">
-            <a href="#home" class="logo" id="logo-brand">RAMANI<span>_S</span></a>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-cube"></i> Ramani S
+            </div>
+            <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li><a href="#contact" class="contact-nav-btn">Contact</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle Menu">
+            <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="home" class="hero container">
-        <div class="hero-grid">
-            <div class="hero-text reveal">
-                <span class="hero-tagline">PORTFOLIO V3</span>
-                <h1>Hi, I'm <span class="gradient-text">Ramani S</span></h1>
-                <h2 class="hero-sub">I am a&nbsp;<span id="type-target"></span></h2>
-                <p class="hero-description">
-                    Pre-final year Computer Science Engineering student passionate about crafting efficient software systems, designing responsive user interfaces, and building predictive machine learning models.
-                </p>
-                <div class="cta-group">
-                    <a href="#projects" class="btn-primary" id="hero-cta-projects">View Projects</a>
-                    <a href="assets/Ramani_S_Resume.pdf" download class="btn-secondary" id="hero-cta-resume">
-                        <i class="fa-solid fa-download"></i> Download Resume
-                    </a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/Ramani04440" target="_blank" aria-label="GitHub Profile" id="hero-social-github">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank" aria-label="LinkedIn Profile" id="hero-social-linkedin">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Glass Interactive Developer Code Terminal Mockup -->
-            <div class="hero-visual reveal">
-                <div class="code-window">
-                    <div class="code-header">
-                        <div class="code-dot dot-red"></div>
-                        <div class="code-dot dot-yellow"></div>
-                        <div class="code-dot dot-green"></div>
-                        <span class="code-title">ramani_profile.js</span>
-                    </div>
-                    <div class="code-body">
-                        <div class="code-line"><span class="code-key">const</span> developer = {</div>
-                        <div class="code-line">&nbsp;&nbsp;name: <span class="code-string">"Ramani S"</span>,</div>
-                        <div class="code-line">&nbsp;&nbsp;education: <span class="code-string">"B.E. Computer Science"</span>,</div>
-                        <div class="code-line">&nbsp;&nbsp;year: <span class="code-num">3</span>, <span class="code-comment">// Pre-Final Year</span></div>
-                        <div class="code-line">&nbsp;&nbsp;coreFocus: [</div>
-                        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Software Engineering"</span>,</div>
-                        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Full-Stack Web Dev"</span>,</div>
-                        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Machine Learning"</span></div>
-                        <div class="code-line">&nbsp;&nbsp;],</div>
-                        <div class="code-line">&nbsp;&nbsp;lovesSolvingProblems: <span class="code-num">true</span>,</div>
-                        <div class="code-line">&nbsp;&nbsp;toolsUsed: [<span class="code-string">"Java"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"SQL"</span>, <span class="code-string">"Git"</span>]</div>
-                        <div class="code-line">};</div>
-                        <div class="code-line"><span class="code-comment">// Ready to build scalable systems.</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Discovery</span>
-            About Me
-        </h2>
-        <div class="about-grid">
-            <div class="about-text reveal">
-                <p>
-                    I am an enthusiastic <strong>Computer Science Engineering student</strong> in my pre-final year, driven by a deep curiosity about technology. My journey in technology is shaped by learning structural development and resolving real-world problems through programming.
-                </p>
-                <p>
-                    My technical interest spans across <strong>Software Development, Artificial Intelligence, Machine Learning, and UI/UX Design</strong>. I love turning complex logic into responsive, intuitive digital products. I am dedicated to writing clean, maintainable code and learning new design guidelines.
-                </p>
-                <p>
-                    My ultimate career goal is to join a forward-thinking engineering team as a Software Engineer where I can contribute to core system architectures, design user-centric interfaces, and apply analytical ML models to drive impactful business decisions.
-                </p>
-            </div>
-            
-            <!-- Statistics Grid -->
-            <div class="about-stats reveal">
-                <div class="stat-box">
-                    <div class="stat-number">12+</div>
-                    <div class="stat-label">Projects Built</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">300+</div>
-                    <div class="stat-label">Leetcode Solved</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">NPTEL Credentials</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Web Internship</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Competencies</span>
-            Technical Arsenal
-        </h2>
-        <div class="skills-grid">
-            
-            <!-- Languages & Core -->
-            <div class="glass-card skill-category-card reveal">
-                <h3>Languages & Databases</h3>
-                <div class="skill-list">
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-brands fa-java"></i> Java</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-solid fa-database"></i> SQL & Databases</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-brands fa-js"></i> JavaScript</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Frontend Development -->
-            <div class="glass-card skill-category-card reveal">
-                <h3>Web Frontend</h3>
-                <div class="skill-list">
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-brands fa-html5"></i> HTML5</span>
-                            <span class="skill-percent">95%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-brands fa-css3-alt"></i> CSS3 / Vanilla CSS</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-solid fa-pen-nib"></i> UI/UX Design</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI & Tooling -->
-            <div class="glass-card skill-category-card reveal">
-                <h3>AI & Workflows</h3>
-                <div class="skill-list">
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-solid fa-brain"></i> Machine Learning</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress-wrapper">
-                        <div class="skill-info">
-                            <span class="skill-title-icon"><i class="fa-brands fa-python"></i> Python Programming</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-bar" data-width="80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Chronology</span>
-            Professional Experience
-        </h2>
-        <div class="timeline">
-            
-            <!-- OneYes Infotech Internship -->
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="glass-card timeline-card">
-                    <span class="timeline-date">June 2025 – July 2025</span>
-                    <h3>Fullstack Developer Intern</h3>
-                    <div class="timeline-company">
-                        ONEYES INFOTECH SOLUTIONS
-                        <span class="loc">Anna Nagar, Chennai</span>
-                    </div>
-                    <p style="color: var(--primary); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 12px; font-weight: 500;">Project: Online Examination System</p>
-                    <ul>
-                        <li>Designed and developed a Full Stack web application of Online Examination and Quiz Management System to conduct, manage, and evaluate online examinations and quizzes, user assessments in a structured and secure manner.</li>
-                        <li>Implemented secure authentication and role-based authorization for administrators and users and also exam scheduling features to support and admin users. Integrated backend logic and database operations to handle exam control.</li>
-                        <li>Actively participated in Software Development Life Cycle (SDLC) phases including requirement analysis, development testing and development with industry-standard development practices throughout the project life cycle.</li>
-                    </ul>
-                    <div class="timeline-links">
-                        <a href="assets/oneyes-offer.pdf" target="_blank" class="timeline-link-btn" title="Offer Letter">
-                            <i class="fa-solid fa-file-invoice"></i> Offer Letter
-                        </a>
-                        <a href="assets/oneyes-cert.pdf" target="_blank" class="timeline-link-btn" title="Completion Certificate">
-                            <i class="fa-solid fa-certificate"></i> Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vulture Management Wings Internship -->
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="glass-card timeline-card">
-                    <span class="timeline-date">December 2025</span>
-                    <h3>Fullstack Developer Intern</h3>
-                    <div class="timeline-company">
-                        VULTURE MANAGEMENT WINGS PVT LTD
-                        <span class="loc">Anna Nagar, Chennai</span>
-                    </div>
-                    <p style="color: var(--primary); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 12px; font-weight: 500;">Project: Driving School Management System</p>
-                    <ul>
-                        <li>Contributed to the development of a Driving School Management System to automate student registration, course scheduling and instructor management to deliver responsive and interactive user experiences.</li>
-                        <li>Integrated RESTful APIs to fetch, display, and manage application data efficiently with structured development workflows.</li>
-                        <li>Acquired practical understanding of real-world application development aligned with SDLC methodologies.</li>
-                    </ul>
-                    <div class="timeline-links">
-                        <a href="assets/vulture-offer.pdf" target="_blank" class="timeline-link-btn" title="Offer Letter">
-                            <i class="fa-solid fa-file-invoice"></i> Offer Letter
-                        </a>
-                        <a href="assets/vulture-cert.pdf" target="_blank" class="timeline-link-btn" title="Completion Certificate">
-                            <i class="fa-solid fa-certificate"></i> Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Portfolio</span>
-            Featured Projects
-        </h2>
-        <div class="projects-grid">
-            
-            <!-- Project 1: NeuroStrata -->
-            <div class="glass-card project-card reveal">
-                <div class="project-visual">
-                    <!-- Custom Abstract Neural Net SVG -->
-                    <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad-neuro" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#9d4edd" stop-opacity="0.2"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="#0a0e1a"/>
-                        <!-- Neural Net Paths -->
-                        <path d="M 50,90 L 150,40 L 250,40 L 350,90 M 50,90 L 150,140 L 250,140 L 350,90 M 150,40 L 250,140 M 150,140 L 250,40 M 150,90 L 250,90 L 350,90" stroke="url(#grad-neuro)" stroke-width="1.5" opacity="0.4"/>
-                        <!-- Scanning line -->
-                        <line x1="0" y1="90" x2="400" y2="90" stroke="#00f2fe" stroke-width="2" opacity="0.6">
-                            <animate attributeName="y" values="10;170;10" dur="5s" repeatCount="indefinite"/>
-                        </line>
-                        <!-- Nodes -->
-                        <circle cx="50" cy="90" r="6" fill="#00f2fe"/>
-                        <circle cx="150" cy="40" r="5" fill="#4facfe"/>
-                        <circle cx="150" cy="90" r="5" fill="#9d4edd"/>
-                        <circle cx="150" cy="140" r="5" fill="#4facfe"/>
-                        <circle cx="250" cy="40" r="5" fill="#9d4edd"/>
-                        <circle cx="250" cy="90" r="5" fill="#00f2fe"/>
-                        <circle cx="250" cy="140" r="5" fill="#9d4edd"/>
-                        <circle cx="350" cy="90" r="7" fill="#00f2fe">
-                            <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="50%" y="30" fill="#fff" font-family="'JetBrains Mono'" font-size="14" font-weight="bold" text-anchor="middle" opacity="0.8">NEUROSTRATA</text>
-                    </svg>
-                </div>
-                <div class="project-content">
-                    <h3>NeuroStrata</h3>
-                    <p class="project-desc">
-                        AI-powered Skin Cancer Detection System developed to assist clinical specialists in identifying potential dermatological malignancies using deep convolutional neural networks.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">TensorFlow</span>
-                        <span class="project-tag">FastAPI</span>
-                        <span class="project-tag">UI Design</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ramani04440/NeuroStrata" target="_blank" class="project-btn-primary" id="project-neurostrata-github">
-                            <i class="fa-brands fa-github"></i> Code
-                        </a>
-                        <a href="#" class="project-btn-secondary" id="project-neurostrata-demo">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2: NavTrack -->
-            <div class="glass-card project-card reveal">
-                <div class="project-visual">
-                    <!-- Custom Route GPS Dashboard SVG -->
-                    <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad-nav" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#4facfe" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#00f2fe" stop-opacity="0.1"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="#0a0e1a"/>
-                        <!-- Grid Lines -->
-                        <path d="M 0,30 L 400,30 M 0,65 L 400,65 M 0,100 L 400,100 M 0,135 L 400,135 M 0,170 L 400,170" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-                        <path d="M 50,0 L 50,180 M 130,0 L 130,180 M 210,0 L 210,180 M 290,0 L 290,180 M 370,0 L 370,180" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-                        <!-- Route Line -->
-                        <path d="M 50,135 Q 130,30 210,100 T 370,30" fill="none" stroke="url(#grad-nav)" stroke-width="3" stroke-dasharray="5 3"/>
-                        <!-- GPS pin -->
-                        <circle cx="210" cy="100" r="6" fill="#ff5f56"/>
-                        <circle cx="210" cy="100" r="12" fill="none" stroke="#ff5f56" stroke-width="1.5">
-                            <animate attributeName="r" values="6;16;6" dur="2.5s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="50%" y="30" fill="#fff" font-family="'JetBrains Mono'" font-size="14" font-weight="bold" text-anchor="middle" opacity="0.8">NAVTRACK</text>
-                    </svg>
-                </div>
-                <div class="project-content">
-                    <h3>NavTrack</h3>
-                    <p class="project-desc">
-                        Enterprise-level Driving School Management System designed to handle slot booking matrices, student records, payments, and instructor allocations seamlessly.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Java</span>
-                        <span class="project-tag">Spring Boot</span>
-                        <span class="project-tag">MySQL</span>
-                        <span class="project-tag">HTML/CSS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ramani04440/NavTrack" target="_blank" class="project-btn-primary" id="project-navtrack-github">
-                            <i class="fa-brands fa-github"></i> Code
-                        </a>
-                        <a href="#" class="project-btn-secondary" id="project-navtrack-demo">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3: Online Examination & Quiz Management -->
-            <div class="glass-card project-card reveal">
-                <div class="project-visual">
-                    <!-- Custom Quiz Paper/Clock SVG -->
-                    <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad-exam" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#9d4edd" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#4facfe" stop-opacity="0.2"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="#0a0e1a"/>
-                        <!-- Clipboard body -->
-                        <rect x="140" y="35" width="120" height="120" rx="8" fill="url(#grad-exam)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-                        <rect x="180" y="27" width="40" height="15" rx="3" fill="#333"/>
-                        <!-- Writing lines -->
-                        <line x1="160" y1="65" x2="240" y2="65" stroke="#fff" stroke-width="2" opacity="0.6"/>
-                        <line x1="160" y1="85" x2="220" y2="85" stroke="#fff" stroke-width="2" opacity="0.6"/>
-                        <line x1="160" y1="105" x2="230" y2="105" stroke="#fff" stroke-width="2" opacity="0.6"/>
-                        <!-- Checkmark -->
-                        <path d="M 160,132 L 170,140 L 195,120" fill="none" stroke="#00f2fe" stroke-width="3" stroke-linecap="round"/>
-                        <text x="50%" y="22" fill="#fff" font-family="'JetBrains Mono'" font-size="14" font-weight="bold" text-anchor="middle" opacity="0.8">ONLINE EXAM SYSTEM</text>
-                    </svg>
-                </div>
-                <div class="project-content">
-                    <h3>Online Examination System</h3>
-                    <p class="project-desc">
-                        A full-stack, secure, multi-role (Admin, Faculty, Student) examination system featuring automated grading pipelines and active relational database layers.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Java</span>
-                        <span class="project-tag">REST APIs</span>
-                        <span class="project-tag">MySQL</span>
-                        <span class="project-tag">HTML & JS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ramani04440/Online-Quiz-System" target="_blank" class="project-btn-primary" id="project-quiz-github">
-                            <i class="fa-brands fa-github"></i> Code
-                        </a>
-                        <a href="#" class="project-btn-secondary" id="project-quiz-demo">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4: Portfolio Website -->
-            <div class="glass-card project-card reveal">
-                <div class="project-visual">
-                    <!-- Custom Code Window SVG -->
-                    <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad-port" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#9d4edd" stop-opacity="0.2"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="#0a0e1a"/>
-                        <!-- Wireframe boxes -->
-                        <rect x="30" y="45" width="100%" height="90" fill="none" stroke="url(#grad-port)" stroke-width="1.5" opacity="0.3"/>
-                        <rect x="50" y="55" width="80" height="40" rx="3" fill="none" stroke="#00f2fe" stroke-width="1" opacity="0.5"/>
-                        <circle cx="280" cy="90" r="30" fill="none" stroke="#9d4edd" stroke-width="2" opacity="0.8">
-                            <animate attributeName="r" values="25;35;25" dur="3s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="50%" y="30" fill="#fff" font-family="'JetBrains Mono'" font-size="14" font-weight="bold" text-anchor="middle" opacity="0.8">PORTFOLIO V3</text>
-                    </svg>
-                </div>
-                <div class="project-content">
-                    <h3>Portfolio Website</h3>
-                    <p class="project-desc">
-                        Modern, professional dark-themed responsive portfolio utilizing glassmorphism styling, clean animations, and structured interactive UI controls.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">HTML5</span>
-                        <span class="project-tag">CSS3 (Vanilla)</span>
-                        <span class="project-tag">JavaScript</span>
-                        <span class="project-tag">Particles.js</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ramani04440/Ramani_S_Master_Portfolio_V3" target="_blank" class="project-btn-primary" id="project-portfolio-github">
-                            <i class="fa-brands fa-github"></i> Code
-                        </a>
-                        <a href="#" class="project-btn-secondary" id="project-portfolio-demo">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Honor & Leadership</span>
-            Academic Achievements
-        </h2>
-        <div class="achievements-grid">
-            
-            <!-- NPTEL Discipline Star -->
-            <div class="glass-card achievement-card reveal">
-                <div class="achievement-icon">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="achievement-info">
-                    <h3>NPTEL Discipline Star</h3>
-                    <p>Awarded by NPTEL for outstanding and consistent certification performances across core engineering disciplines.</p>
-                </div>
-            </div>
-
-            <!-- NPTEL Motivated Learner -->
-            <div class="glass-card achievement-card reveal">
-                <div class="achievement-icon">
-                    <i class="fa-solid fa-award"></i>
-                </div>
-                <div class="achievement-info">
-                    <h3>NPTEL Motivated Learner</h3>
-                    <p>Recognized as an active student learner in NPTEL programming and database modules.</p>
-                </div>
-            </div>
-
-            <!-- IEEE and YUCI activities -->
-            <div class="glass-card achievement-card reveal">
-                <div class="achievement-icon">
-                    <i class="fa-solid fa-network-wired"></i>
-                </div>
-                <div class="achievement-info">
-                    <h3>IEEE & YUCI Activities</h3>
-                    <p>Participated in professional student society tasks and workshops tracking computing paradigms and leadership.</p>
-                </div>
-            </div>
-
-            <!-- Technical Event Participation -->
-            <div class="glass-card achievement-card reveal">
-                <div class="achievement-icon">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </div>
-                <div class="achievement-info">
-                    <h3>Technical Event Participation</h3>
-                    <p>Competed in multiple institutional coding events, design workshops, and AI challenge domains.</p>
-                </div>
-            </div>
-
-            <!-- Leadership Activities -->
-            <div class="glass-card achievement-card reveal">
-                <div class="achievement-icon">
-                    <i class="fa-solid fa-people-group"></i>
-                </div>
-                <div class="achievement-info">
-                    <h3>Leadership Activities</h3>
-                    <p>Organized college symposium modules and led engineering study networks supporting peer programming.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Credentials</span>
-            Professional Certifications
-        </h2>
-        <div class="certs-grid">
-            
-            <!-- Certification 1 -->
-            <div class="glass-card cert-card reveal">
-                <span class="cert-badge">Database Management</span>
-                <h3>DBMS Certification</h3>
-                <p class="cert-org">NPTEL Online Certification (Elite Rank)</p>
-                <a href="#" target="_blank" class="cert-link" id="cert-dbms-verify">
-                    Verify Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Certification 2 -->
-            <div class="glass-card cert-card reveal">
-                <span class="cert-badge">Programming</span>
-                <h3>Programming In Java</h3>
-                <p class="cert-org">NPTEL Online Certification (Elite+Silver Rank)</p>
-                <a href="#" target="_blank" class="cert-link" id="cert-java-verify">
-                    Verify Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Certification 3 -->
-            <div class="glass-card cert-card reveal">
-                <span class="cert-badge">Full Stack Developer</span>
-                <h3>Full Stack Intern Certification</h3>
-                <p class="cert-org">OneYes Infotech Solutions</p>
-                <a href="#" target="_blank" class="cert-link" id="cert-internship-verify">
-                    Verify Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container">
-        <h2 class="section-head reveal">
-            <span class="tagline">Get In Touch</span>
-            Contact Me
-        </h2>
-        <div class="contact-grid">
-            
-            <!-- Contact Info Panel -->
-            <div class="contact-info reveal">
-                <p class="contact-intro">
-                    Whether you are an engineering recruiter looking for a passionate candidate, want to discuss a collaborative project, or just want to connect, feel free to drop a message or reach out through my links!
-                </p>
-                <div class="contact-list">
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <a href="mailto:ramani04122005@gmail.com">ramani04122005@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank">linkedin.com/in/ramani-s</a>
-                        </div>
-                    </div>
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/Ramani04440" target="_blank">github.com/Ramani04440</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form UI -->
-            <div class="glass-card reveal">
-                <form class="contact-form" id="contact-form" novalidate>
-                    <div class="form-group">
-                        <input type="text" id="form-name" class="form-input" placeholder=" " required>
-                        <label for="form-name" class="form-label">Full Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="form-email" class="form-input" placeholder=" " required>
-                        <label for="form-email" class="form-label">Email Address</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="form-subject" class="form-input" placeholder=" " required>
-                        <label for="form-subject" class="form-label">Subject</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="form-message" class="form-input" placeholder=" " required></textarea>
-                        <label for="form-message" class="form-label">Your Message</label>
-                    </div>
-                    <button type="submit" class="btn-primary" id="form-submit-btn">
-                        <i class="fa-solid fa-paper-plane"></i> Send Message
-                    </button>
-                    <p class="form-status" id="form-status-message"></p>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Scroll to Top Widget -->
-    <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top" title="Scroll to top">
-        <i class="fa-solid fa-arrow-up"></i>
+    <!-- AI Assistant Button -->
+    <button class="ai-toggle" id="aiToggle" title="Open AI Assistant">
+        <i class="fas fa-robot"></i>
     </button>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <a href="#home" class="logo">RAMANI<span>_S</span></a>
-            <ul class="footer-nav">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-            <div class="footer-socials">
-                <a href="https://github.com/Ramani04440" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <!-- AI Chat Panel -->
+    <div class="ai-panel hidden" id="aiPanel">
+        <div class="ai-header">
+            <h3>AI Assistant</h3>
+            <button class="close-btn" id="closeAI"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-chat" id="aiChat"></div>
+        <div class="ai-input-row">
+            <input type="text" id="aiInput" placeholder="Ask me anything..." class="ai-input">
+            <button id="aiSend" class="ai-send-btn"><i class="fas fa-paper-plane"></i></button>
+            <button id="aiVoice" class="ai-voice-btn" title="Voice input"><i class="fas fa-microphone"></i></button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Ramani S</span>
+                </h1>
+                <p class="hero-subtitle">Full Stack Developer • AI Enthusiast • Problem Solver</p>
+                <p class="hero-desc">Building elegant solutions with code, AI, and creativity</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
             </div>
-            <p>© 2026 Ramani S. All rights reserved. | Built with HTML, CSS & JavaScript.</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-photo">
+                        <img src="./profile.jpg" alt="Ramani S - CS Engineering Student" class="profile-image">
+                        <div class="photo-badge">Final Year</div>
+                    </div>
+                    <div class="about-content">
+                        <p>I'm a passionate Computer Science Engineering student in my final year, driven by curiosity and innovation. I specialize in full-stack development, AI/ML, and creating intuitive digital experiences.</p>
+                        <p>With hands-on experience in web development, database management, and machine learning, I love transforming complex problems into elegant solutions. My goal is to contribute to cutting-edge projects that make a real impact.</p>
+                        <div class="social-links">
+                            <a href="https://github.com/Ramani04440" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/ramani-s-149579282" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:ramani04122005@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                        <div class="about-cards">
+                            <div class="feature-card">
+                                <i class="fas fa-code"></i>
+                                <h4>Clean Code</h4>
+                                <p>Writing maintainable, efficient code</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-brain"></i>
+                                <h4>AI/ML</h4>
+                                <p>Deep learning & neural networks</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-rocket"></i>
+                                <h4>Full Stack</h4>
+                                <p>Frontend to backend excellence</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-palette"></i>
+                                <h4>UI/UX Design</h4>
+                                <p>Beautiful & intuitive interfaces</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section skills" id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i> Languages</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>Java</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>SQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-palette"></i> Frontend</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>HTML5 & CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>React / Vue</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>UI/UX Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Backend & Tools</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>Spring Boot</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>MySQL & MongoDB</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Git & GitHub</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> AI & ML</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span>TensorFlow & Keras</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Deep Learning</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Data Analysis</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section projects" id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>NeuroStrata</h3>
+                            <p>AI-powered Skin Cancer Detection System using deep CNNs</p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>TensorFlow</span>
+                                <span>FastAPI</span>
+                            </div>
+                            <a href="https://github.com/Ramani04440/NeuroStrata" target="_blank" class="project-link">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>NavTrack</h3>
+                            <p>Driving School Management System with booking & scheduling</p>
+                            <div class="project-tags">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>MySQL</span>
+                            </div>
+                            <a href="https://github.com/Ramani04440/NavTrack" target="_blank" class="project-link">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Online Exam System</h3>
+                            <p>Secure multi-role examination platform with auto grading</p>
+                            <div class="project-tags">
+                                <span>Java</span>
+                                <span>REST APIs</span>
+                                <span>MySQL</span>
+                            </div>
+                            <a href="https://github.com/Ramani04440/Online-Quiz-System" target="_blank" class="project-link">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>3D Portfolio</h3>
+                            <p>Interactive 3D portfolio with AI assistant and live background</p>
+                            <div class="project-tags">
+                                <span>HTML5</span>
+                                <span>Three.js</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <a href="#" class="project-link">
+                                Current Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section experience" id="experience">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Fullstack Developer Intern</h3>
+                            <p class="company">ONEYES INFOTECH SOLUTIONS • Chennai</p>
+                            <p class="date">Jun 2025 – Jul 2025</p>
+                            <ul>
+                                <li>Designed Full Stack web app for online examinations with secure authentication</li>
+                                <li>Integrated backend logic and database operations for exam management</li>
+                                <li>Followed SDLC methodologies across development lifecycle</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Fullstack Developer Intern</h3>
+                            <p class="company">VULTURE MANAGEMENT WINGS PVT LTD • Chennai</p>
+                            <p class="date">Dec 2025</p>
+                            <ul>
+                                <li>Built management system for student registration and course scheduling</li>
+                                <li>Integrated RESTful APIs for efficient data management</li>
+                                <li>Implemented real-world SDLC best practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="section achievements" id="achievements">
+            <div class="container">
+                <h2 class="section-title">Achievements & Extra-Curriculars</h2>
+                <div class="achievements-list">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>IEEE Best Student Volunteer Award</h3>
+                            <p>Recognized for outstanding leadership & contributions to IEEE activities — 2025</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>NPTEL STAR – Motivated Learner</h3>
+                            <p>Awarded for consistent performance and dedication to online learning</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>NPTEL STAR – Discipline Star</h3>
+                            <p>Recognized for exemplary discipline and commitment across NPTEL courses</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>E-Cell IIT Bombay – Campus Ambassador</h3>
+                            <p>Promoted entrepreneurship initiatives and student engagement</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>IEEE CS SYP HIZE 2.0 – Outreach Team Member</h3>
+                            <p>Assisted in outreach & event promotion; supported participant engagement — Jun-Dec 2024</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>Youth United Council of India – Campus Coordinator & Dept Head</h3>
+                            <p>Engaged 600+ members, recruited 100+ volunteers, led design & content teams — Oct 2024-Feb 2025</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>IEEE Reliability Society – Design Lead</h3>
+                            <p>Created posters, invitations, certificates; led design team for high-quality event materials — Oct-Dec 2025</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>UiAutomistix Sairam – Technical Coordinator</h3>
+                            <p>Managed events end-to-end, led members, and produced event materials — Mar 2024–Present</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3>IEEE Reliability Society – Chairperson</h3>
+                            <p>Leading executive & operational teams in planning and executing IEEE activities — Jan 2026–Present</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>I'm always open to new opportunities and interesting projects. Feel free to reach out!</p>
+                        <div class="contact-links">
+                            <a href="mailto:ramani04122005@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>ramani04122005@gmail.com</span>
+                            </a>
+                            <a href="https://github.com/Ramani04440" target="_blank" class="contact-link">
+                                <i class="fab fa-github"></i>
+                                <span>github.com/Ramani04440</span>
+                            </a>
+                            <a href="https://linkedin.com/in/ramani-s-149579282" target="_blank" class="contact-link">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn Profile</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Ramani S. All rights reserved. Built with passion and code.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+            <div class="boot-icon-ring">
+                <svg viewBox="0 0 100 100" width="80" height="80">
+                    <defs>
+                        <linearGradient id="boot-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00d4ff"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="url(#boot-grad)" stroke-width="2.5"/>
+                    <text x="50" y="58" text-anchor="middle" fill="url(#boot-grad)" font-family="'Inter'" font-weight="800" font-size="28">R</text>
+                </svg>
+            </div>
+            <h1 class="boot-name">RamaniOS</h1>
+            <p class="boot-version">v3.0 — Portfolio Edition</p>
+        </div>
+        <div class="boot-loader">
+            <div class="boot-progress"></div>
+        </div>
+        <p class="boot-status">Initializing system...</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- DESKTOP                                    -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="desktop" class="hidden">
+
+        <!-- Animated Background -->
+        <div class="desktop-bg">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+            <div class="mesh-grid"></div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <button class="desktop-icon" data-window="about" id="icon-about">
+                <div class="icon-img"><i class="fa-solid fa-user-astronaut"></i></div>
+                <span>About Me</span>
+            </button>
+            <button class="desktop-icon" data-window="skills" id="icon-skills">
+                <div class="icon-img"><i class="fa-solid fa-code"></i></div>
+                <span>Skills</span>
+            </button>
+            <button class="desktop-icon" data-window="experience" id="icon-experience">
+                <div class="icon-img"><i class="fa-solid fa-briefcase"></i></div>
+                <span>Experience</span>
+            </button>
+            <button class="desktop-icon" data-window="projects" id="icon-projects">
+                <div class="icon-img"><i class="fa-solid fa-rocket"></i></div>
+                <span>Projects</span>
+            </button>
+            <button class="desktop-icon" data-window="achievements" id="icon-achievements">
+                <div class="icon-img"><i class="fa-solid fa-trophy"></i></div>
+                <span>Achievements</span>
+            </button>
+            <button class="desktop-icon" data-window="certifications" id="icon-certifications">
+                <div class="icon-img"><i class="fa-solid fa-certificate"></i></div>
+                <span>Certifications</span>
+            </button>
+            <button class="desktop-icon" data-window="contact" id="icon-contact">
+                <div class="icon-img"><i class="fa-solid fa-envelope"></i></div>
+                <span>Contact</span>
+            </button>
+            <button class="desktop-icon" data-window="terminal" id="icon-terminal">
+                <div class="icon-img terminal-icon-special"><i class="fa-solid fa-terminal"></i></div>
+                <span>Terminal</span>
+            </button>
+            <button class="desktop-icon" data-window="resume" id="icon-resume">
+                <div class="icon-img resume-icon-special"><i class="fa-solid fa-file-pdf"></i></div>
+                <span>Resume</span>
+            </button>
+        </div>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- WINDOWS                                -->
+        <!-- ══════════════════════════════════════ -->
+
+        <!-- ABOUT WINDOW -->
+        <div class="os-window" id="window-about" data-window="about">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-user-astronaut"></i> About Me</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="about-hero-card">
+                    <div class="about-avatar">
+                        <div class="avatar-ring">
+                            <span>RS</span>
+                        </div>
+                    </div>
+                    <div class="about-headline">
+                        <h2>Ramani S</h2>
+                        <p class="about-role">Computer Science Engineering • Final Year</p>
+                        <div class="about-socials">
+                            <a href="https://github.com/Ramani04440" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="mailto:ramani04122005@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-bio">
+                    <p>I am an enthusiastic <strong>Computer Science Engineering student</strong> in my final year, driven by a deep curiosity about technology. My technical interest spans across <strong>Software Development, Artificial Intelligence, Machine Learning, and UI/UX Design</strong>.</p>
+                    <p>I love turning complex logic into responsive, intuitive digital products. My goal is to join a forward-thinking engineering team as a Software Engineer where I can contribute to core system architectures and apply ML models to drive impactful decisions.</p>
+                </div>
+                <div class="about-stats-row">
+                    <div class="mini-stat">
+                        <span class="mini-stat-num">12+</span>
+                        <span class="mini-stat-label">Projects</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-stat-num">300+</span>
+                        <span class="mini-stat-label">LeetCode</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-stat-num">2</span>
+                        <span class="mini-stat-label">NPTEL Certs</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-stat-num">2</span>
+                        <span class="mini-stat-label">Internships</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS WINDOW -->
+        <div class="os-window" id="window-skills" data-window="skills">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-code"></i> Skills</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="skill-orbit-container">
+                    <div class="skill-category">
+                        <h3><i class="fa-solid fa-laptop-code"></i> Languages & Core</h3>
+                        <div class="skill-tags">
+                            <span class="skill-chip" data-level="90"><i class="fa-brands fa-java"></i> Java <em>90%</em></span>
+                            <span class="skill-chip" data-level="85"><i class="fa-solid fa-database"></i> SQL <em>85%</em></span>
+                            <span class="skill-chip" data-level="80"><i class="fa-brands fa-js"></i> JavaScript <em>80%</em></span>
+                            <span class="skill-chip" data-level="80"><i class="fa-brands fa-python"></i> Python <em>80%</em></span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fa-solid fa-palette"></i> Frontend & Design</h3>
+                        <div class="skill-tags">
+                            <span class="skill-chip" data-level="95"><i class="fa-brands fa-html5"></i> HTML5 <em>95%</em></span>
+                            <span class="skill-chip" data-level="90"><i class="fa-brands fa-css3-alt"></i> CSS3 <em>90%</em></span>
+                            <span class="skill-chip" data-level="75"><i class="fa-solid fa-pen-nib"></i> UI/UX <em>75%</em></span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fa-solid fa-gear"></i> AI & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-chip" data-level="75"><i class="fa-solid fa-brain"></i> Machine Learning <em>75%</em></span>
+                            <span class="skill-chip" data-level="85"><i class="fa-brands fa-git-alt"></i> Git & GitHub <em>85%</em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE WINDOW -->
+        <div class="os-window" id="window-experience" data-window="experience">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-briefcase"></i> Experience</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="exp-timeline">
+                    <div class="exp-entry">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card">
+                            <div class="exp-header">
+                                <h3>Fullstack Developer Intern</h3>
+                                <span class="exp-date">Jun 2025 – Jul 2025</span>
+                            </div>
+                            <p class="exp-company"><i class="fa-solid fa-building"></i> ONEYES INFOTECH SOLUTIONS <span class="exp-loc">• Chennai</span></p>
+                            <p class="exp-project"><i class="fa-solid fa-diagram-project"></i> Project: Online Examination System</p>
+                            <ul>
+                                <li>Designed a Full Stack web app for online examinations with secure authentication and role-based authorization.</li>
+                                <li>Integrated backend logic and database operations for exam scheduling and user management.</li>
+                                <li>Followed SDLC methodologies including requirement analysis, development, and testing.</li>
+                            </ul>
+                            <div class="exp-docs">
+                                <a href="assets/oneyes-offer.pdf" target="_blank" class="doc-chip offer"><i class="fa-solid fa-file-signature"></i> Offer Letter</a>
+                                <a href="assets/oneyes-cert.pdf" target="_blank" class="doc-chip cert"><i class="fa-solid fa-award"></i> Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exp-entry">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card">
+                            <div class="exp-header">
+                                <h3>Fullstack Developer Intern</h3>
+                                <span class="exp-date">Dec 2025</span>
+                            </div>
+                            <p class="exp-company"><i class="fa-solid fa-building"></i> VULTURE MANAGEMENT WINGS PVT LTD <span class="exp-loc">• Chennai</span></p>
+                            <p class="exp-project"><i class="fa-solid fa-diagram-project"></i> Project: Driving School Management System</p>
+                            <ul>
+                                <li>Built a management system to automate student registration, course scheduling, and instructor allocation.</li>
+                                <li>Integrated RESTful APIs to manage application data efficiently.</li>
+                                <li>Gained practical understanding of real-world SDLC methodologies.</li>
+                            </ul>
+                            <div class="exp-docs">
+                                <a href="assets/vulture-offer.pdf" target="_blank" class="doc-chip offer"><i class="fa-solid fa-file-signature"></i> Offer Letter</a>
+                                <a href="assets/vulture-cert.pdf" target="_blank" class="doc-chip cert"><i class="fa-solid fa-award"></i> Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS WINDOW -->
+        <div class="os-window wide-window" id="window-projects" data-window="projects">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-rocket"></i> Projects</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="project-bento">
+                    <div class="bento-card bento-large">
+                        <div class="bento-glow"></div>
+                        <span class="bento-badge">AI / ML</span>
+                        <h3>NeuroStrata</h3>
+                        <p>AI-powered Skin Cancer Detection System using deep convolutional neural networks to assist clinical diagnosis.</p>
+                        <div class="bento-tags">
+                            <span>Python</span><span>TensorFlow</span><span>FastAPI</span><span>UI Design</span>
+                        </div>
+                        <div class="bento-links">
+                            <a href="https://github.com/Ramani04440/NeuroStrata" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="bento-card">
+                        <div class="bento-glow"></div>
+                        <span class="bento-badge">Full Stack</span>
+                        <h3>NavTrack</h3>
+                        <p>Driving School Management System handling slot booking, student records, and instructor allocations.</p>
+                        <div class="bento-tags">
+                            <span>Java</span><span>Spring Boot</span><span>MySQL</span>
+                        </div>
+                        <div class="bento-links">
+                            <a href="https://github.com/Ramani04440/NavTrack" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="bento-card">
+                        <div class="bento-glow"></div>
+                        <span class="bento-badge">Full Stack</span>
+                        <h3>Online Exam System</h3>
+                        <p>Secure multi-role examination platform with automated grading and database management.</p>
+                        <div class="bento-tags">
+                            <span>Java</span><span>REST APIs</span><span>MySQL</span>
+                        </div>
+                        <div class="bento-links">
+                            <a href="https://github.com/Ramani04440/Online-Quiz-System" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="bento-card">
+                        <div class="bento-glow"></div>
+                        <span class="bento-badge">Frontend</span>
+                        <h3>Portfolio OS</h3>
+                        <p>This interactive OS-themed portfolio you are viewing right now — a unique desktop simulation.</p>
+                        <div class="bento-tags">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                        </div>
+                        <div class="bento-links">
+                            <a href="https://github.com/Ramani04440/Ramani_S_Master_Portfolio_V3" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACHIEVEMENTS WINDOW -->
+        <div class="os-window" id="window-achievements" data-window="achievements">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-trophy"></i> Achievements</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="ach-list">
+                    <div class="ach-item">
+                        <div class="ach-icon gold"><i class="fa-solid fa-star"></i></div>
+                        <div class="ach-info">
+                            <h4>NPTEL Discipline Star</h4>
+                            <p>Outstanding and consistent certification performances across core engineering disciplines.</p>
+                        </div>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-icon purple"><i class="fa-solid fa-award"></i></div>
+                        <div class="ach-info">
+                            <h4>NPTEL Motivated Learner</h4>
+                            <p>Recognized as an active student learner in NPTEL programming and database modules.</p>
+                        </div>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-icon cyan"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="ach-info">
+                            <h4>IEEE & YUCI Activities</h4>
+                            <p>Participated in professional student society workshops tracking computing paradigms and leadership.</p>
+                        </div>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-icon pink"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="ach-info">
+                            <h4>Technical Event Participation</h4>
+                            <p>Competed in multiple institutional coding events, design workshops, and AI challenges.</p>
+                        </div>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-icon green"><i class="fa-solid fa-people-group"></i></div>
+                        <div class="ach-info">
+                            <h4>Leadership Activities</h4>
+                            <p>Organized college symposium modules and led engineering study networks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS WINDOW -->
+        <div class="os-window" id="window-certifications" data-window="certifications">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-certificate"></i> Certifications</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+                        <div class="cert-detail">
+                            <h4>DBMS Certification</h4>
+                            <p class="cert-issuer">NPTEL Online — <strong>Elite Rank</strong></p>
+                        </div>
+                        <span class="cert-status verified"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fa-brands fa-java"></i></div>
+                        <div class="cert-detail">
+                            <h4>Programming In Java</h4>
+                            <p class="cert-issuer">NPTEL Online — <strong>Elite + Silver</strong></p>
+                        </div>
+                        <span class="cert-status verified"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="cert-detail">
+                            <h4>Full Stack Intern Certificate</h4>
+                            <p class="cert-issuer">OneYes Infotech Solutions</p>
+                        </div>
+                        <span class="cert-status verified"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT WINDOW -->
+        <div class="os-window" id="window-contact" data-window="contact">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-envelope"></i> Contact</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body">
+                <div class="contact-split">
+                    <div class="contact-info-panel">
+                        <h3>Let's Connect</h3>
+                        <p>Whether you're a recruiter, a collaborator, or just want to say hello — I'd love to hear from you.</p>
+                        <div class="contact-links">
+                            <a href="mailto:ramani04122005@gmail.com" class="contact-chip"><i class="fa-solid fa-envelope"></i> ramani04122005@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank" class="contact-chip"><i class="fa-brands fa-linkedin-in"></i> linkedin.com/in/ramani-s</a>
+                            <a href="https://github.com/Ramani04440" target="_blank" class="contact-chip"><i class="fa-brands fa-github"></i> github.com/Ramani04440</a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form" novalidate>
+                        <div class="form-row">
+                            <input type="text" id="form-name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" id="form-email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-row">
+                            <textarea id="form-message" placeholder="Your Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="form-send-btn" id="form-submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                        <p class="form-feedback" id="form-feedback"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERMINAL WINDOW -->
+        <div class="os-window terminal-window" id="window-terminal" data-window="terminal">
+            <div class="window-titlebar terminal-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-terminal"></i> ramani@portfolio:~</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body terminal-body" id="terminal-output">
+                <div class="term-line">
+                    <span class="term-prompt">visitor@ramanios:~$</span>
+                    <span class="term-text">welcome</span>
+                </div>
+                <pre class="term-ascii">
+ ____                            _    ___  ____  
+|  _ \ __ _ _ __ ___   __ _ _ __ (_)  / _ \/ ___| 
+| |_) / _` | '_ ` _ \ / _` | '_ \| | | | |\___ \ 
+|  _ < (_| | | | | | | (_| | | | | | |_| | ___) |
+|_| \_\__,_|_| |_| |_|\__,_|_| |_|_|\___/ |____/ 
+                </pre>
+                <div class="term-line">
+                    <span class="term-text term-info">Welcome to RamaniOS Terminal v3.0</span>
+                </div>
+                <div class="term-line">
+                    <span class="term-text term-info">Type <strong>help</strong> for available commands.</span>
+                </div>
+                <div class="term-line term-spacer"></div>
+            </div>
+            <div class="terminal-input-row">
+                <span class="term-prompt">visitor@ramanios:~$</span>
+                <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+            </div>
+        </div>
+
+        <!-- RESUME WINDOW (simple) -->
+        <div class="os-window" id="window-resume" data-window="resume">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="win-btn win-close" data-action="close"></button>
+                    <button class="win-btn win-minimize" data-action="minimize"></button>
+                    <button class="win-btn win-maximize" data-action="maximize"></button>
+                </div>
+                <span class="window-title"><i class="fa-solid fa-file-pdf"></i> Resume</span>
+                <div class="window-spacer"></div>
+            </div>
+            <div class="window-body resume-body">
+                <div class="resume-placeholder">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <h3>Ramani S — Resume</h3>
+                    <p>Download the latest version of my resume.</p>
+                    <a href="assets/Ramani_S_Resume.pdf" download class="resume-dl-btn"><i class="fa-solid fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- DOCK / TASKBAR                         -->
+        <!-- ══════════════════════════════════════ -->
+        <div class="dock" id="dock">
+            <div class="dock-left">
+                <button class="dock-start" id="start-btn" title="Start Menu">
+                    <svg viewBox="0 0 100 100" width="22" height="22">
+                        <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="#00d4ff" stroke-width="4"/>
+                        <text x="50" y="58" text-anchor="middle" fill="#00d4ff" font-family="'Inter'" font-weight="800" font-size="28">R</text>
+                    </svg>
+                </button>
+            </div>
+            <div class="dock-center" id="dock-tasks">
+                <!-- Active window tabs appear here dynamically -->
+            </div>
+            <div class="dock-right">
+                <span class="dock-clock" id="dock-clock"></span>
+            </div>
+        </div>
+
+        <!-- START MENU -->
+        <div class="start-menu hidden" id="start-menu">
+            <div class="start-header">
+                <div class="start-avatar">RS</div>
+                <div>
+                    <strong>Ramani S</strong>
+                    <p>CS Engineering Student</p>
+                </div>
+            </div>
+            <div class="start-grid">
+                <button class="start-item" data-window="about"><i class="fa-solid fa-user-astronaut"></i> About</button>
+                <button class="start-item" data-window="skills"><i class="fa-solid fa-code"></i> Skills</button>
+                <button class="start-item" data-window="experience"><i class="fa-solid fa-briefcase"></i> Experience</button>
+                <button class="start-item" data-window="projects"><i class="fa-solid fa-rocket"></i> Projects</button>
+                <button class="start-item" data-window="achievements"><i class="fa-solid fa-trophy"></i> Achievements</button>
+                <button class="start-item" data-window="certifications"><i class="fa-solid fa-certificate"></i> Certifications</button>
+                <button class="start-item" data-window="contact"><i class="fa-solid fa-envelope"></i> Contact</button>
+                <button class="start-item" data-window="terminal"><i class="fa-solid fa-terminal"></i> Terminal</button>
+            </div>
+            <div class="start-footer">
+                <span>RamaniOS v3.0 • 2026</span>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-overlay hidden" id="mobile-overlay">
+            <div class="mobile-menu">
+                <div class="mobile-header">
+                    <div class="start-avatar">RS</div>
+                    <h2>Ramani S</h2>
+                    <p>CS Engineering • Final Year</p>
+                </div>
+                <div class="mobile-grid">
+                    <button class="mobile-app" data-window="about"><i class="fa-solid fa-user-astronaut"></i><span>About</span></button>
+                    <button class="mobile-app" data-window="skills"><i class="fa-solid fa-code"></i><span>Skills</span></button>
+                    <button class="mobile-app" data-window="experience"><i class="fa-solid fa-briefcase"></i><span>Experience</span></button>
+                    <button class="mobile-app" data-window="projects"><i class="fa-solid fa-rocket"></i><span>Projects</span></button>
+                    <button class="mobile-app" data-window="achievements"><i class="fa-solid fa-trophy"></i><span>Achievements</span></button>
+                    <button class="mobile-app" data-window="certifications"><i class="fa-solid fa-certificate"></i><span>Certs</span></button>
+                    <button class="mobile-app" data-window="contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></button>
+                    <button class="mobile-app" data-window="terminal"><i class="fa-solid fa-terminal"></i><span>Terminal</span></button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /#desktop -->
+
     <script src="script.js"></script>
 </body>
 </html>
