@@ -1,249 +1,219 @@
-/*
-   RAMANI S - Interactive Client-Side Portfolio Engine
-   Features: Typewriter, Particles background, Skills Intersection Observer, Scrollspy Active Menu, Form Verification
-*/
+// Three.js 3D Scene Setup
+let scene, camera, renderer, particles;
 
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Initialize Particles.js Background
-    if (typeof particlesJS !== "undefined") {
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 50, "density": { "enable": true, "value_area": 900 } },
-                "color": { "value": "#00f2fe" },
-                "shape": { "type": "circle" },
-                "opacity": { 
-                    "value": 0.15, 
-                    "random": true, 
-                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.05, "sync": false } 
-                },
-                "size": { 
-                    "value": 2, 
-                    "random": true, 
-                    "anim": { "enable": false } 
-                },
-                "line_linked": { 
-                    "enable": true, 
-                    "distance": 150, 
-                    "color": "#00f2fe", 
-                    "opacity": 0.08, 
-                    "width": 1 
-                },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.2, 
-                    "direction": "none", 
-                    "random": true, 
-                    "straight": false, 
-                    "out_mode": "out", 
-                    "bounce": false 
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "bubble" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "bubble": { "distance": 150, "size": 3, "duration": 2, "opacity": 0.3, "speed": 3 },
-                    "push": { "particles_nb": 3 }
-                }
-            },
-            "retina_detect": true
-        });
+function initThreeJS() {
+    // Scene setup
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0f172a);
+
+    // Camera setup
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    camera.position.z = 100;
+
+    // Renderer setup
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Create particles
+    createParticles();
+
+    // Animation loop
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', onWindowResize);
+}
+
+function createParticles() {
+    const geometry = new THREE.BufferGeometry();
+    const particleCount = 200;
+    const posArray = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+        posArray[i] = (Math.random() - 0.5) * 400;
+        posArray[i + 1] = (Math.random() - 0.5) * 400;
+        posArray[i + 2] = (Math.random() - 0.5) * 300;
     }
 
-    // 2. Typewriter Text Engine
-    const roles = ["Aspiring Software Engineer.", "Machine Learning Enthusiast.", "Frontend Developer."];
-    let roleIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
-    const typeTarget = document.getElementById("type-target");
+    geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-    function type() {
-        if (!typeTarget) return;
-        
-        const currentRole = roles[roleIdx];
-        
-        if (isDeleting) {
-            typeTarget.textContent = currentRole.substring(0, charIdx - 1);
-            charIdx--;
-        } else {
-            typeTarget.textContent = currentRole.substring(0, charIdx + 1);
-            charIdx++;
-        }
-
-        let typeSpeed = isDeleting ? 40 : 80;
-
-        if (!isDeleting && charIdx === currentRole.length) {
-            // Pause at full word
-            typeSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
-            isDeleting = false;
-            roleIdx = (roleIdx + 1) % roles.length;
-            // Short pause before writing next word
-            typeSpeed = 400;
-        }
-
-        setTimeout(type, typeSpeed);
-    }
-    
-    // Start typing loop
-    setTimeout(type, 1000);
-
-    // 3. Navigation Scrolling Interactions (Scrolled State & Scrollspy Active)
-    const navbar = document.getElementById("navbar");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll("section, header");
-
-    window.addEventListener("scroll", () => {
-        const scrollPos = window.scrollY;
-
-        // Sticky Nav styling
-        if (scrollPos > 50) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-
-        // Active link tracking (Scrollspy)
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute("id");
-
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href") === `#${sectionId}`) {
-                        link.classList.add("active");
-                    }
-                });
-            }
-        });
+    const material = new THREE.PointsMaterial({
+        size: 2,
+        color: 0x00d4ff,
+        sizeAttenuation: true,
+        transparent: true,
+        opacity: 0.6
     });
 
-    // 4. Mobile Menu Toggle Drawer
-    const hamburger = document.getElementById("hamburger-toggle");
-    const navMenu = document.getElementById("nav-menu");
+    particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+}
 
-    if (hamburger && navMenu) {
-        hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
-        });
+function animate() {
+    requestAnimationFrame(animate);
 
-        // Close menu on selecting item
-        document.querySelectorAll(".nav-menu a").forEach(link => {
-            link.addEventListener("click", () => {
-                hamburger.classList.remove("active");
-                navMenu.classList.remove("active");
-            });
-        });
+    // Rotate particles
+    if (particles) {
+        particles.rotation.x += 0.0001;
+        particles.rotation.y += 0.0002;
     }
 
-    // 5. Skills Progress Bar Visual Entrance (Intersection Observer)
-    const skillSection = document.getElementById("skills");
-    const progressBars = document.querySelectorAll(".progress-bar");
+    renderer.render(scene, camera);
+}
 
-    if (skillSection && progressBars.length > 0) {
-        const skillsObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    progressBars.forEach(bar => {
-                        const targetWidth = bar.getAttribute("data-width");
-                        bar.style.width = targetWidth;
-                    });
-                    // Unobserve after running once
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
+function onWindowResize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
-        skillsObserver.observe(skillSection);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+}
+
+// AI Assistant Logic
+const aiResponses = {
+    hello: "Hi there! I'm Ramani's AI assistant. How can I help you today?",
+    hi: "Hello! Welcome to my portfolio. What would you like to know?",
+    projects: "I've worked on several interesting projects including NeuroStrata (AI/ML), NavTrack (Driving School Management), Online Exam System, and this 3D Portfolio! Check the projects section for more details.",
+    skills: "I'm skilled in Java, Python, JavaScript, SQL, HTML5, CSS3, React, Spring Boot, MySQL, Machine Learning, and more. See the skills section for a detailed breakdown.",
+    experience: "I have 2 internships as a Fullstack Developer at OneYes Infotech and Vulture Management. Check the experience section for full details.",
+    contact: "You can reach me at ramani04122005@gmail.com or connect via LinkedIn and GitHub. Use the contact form below!",
+    about: "I'm a CS Engineering student passionate about software development, AI/ML, and creating beautiful interfaces. I love solving complex problems with code.",
+    ai: "I'm an AI assistant built with Web Speech API and JavaScript. I can respond to voice commands and provide text-to-speech output!",
+    speech: "I support voice input! Click the microphone button to speak, and I'll respond verbally using text-to-speech synthesis.",
+    help: "You can ask me about projects, skills, experience, contact info, or just say hello! Try voice commands too.",
+    default: "That's interesting! Feel free to ask me about projects, skills, experience, or anything else in my portfolio."
+};
+
+const aiPanel = document.getElementById('aiPanel');
+const aiChat = document.getElementById('aiChat');
+const aiInput = document.getElementById('aiInput');
+const aiSend = document.getElementById('aiSend');
+const aiVoice = document.getElementById('aiVoice');
+const aiToggle = document.getElementById('aiToggle');
+const closeAI = document.getElementById('closeAI');
+
+let isListening = false;
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = 'en-US';
+
+// AI Panel Toggle
+aiToggle.addEventListener('click', () => {
+    aiPanel.classList.toggle('hidden');
+});
+
+closeAI.addEventListener('click', () => {
+    aiPanel.classList.add('hidden');
+});
+
+// Send message
+aiSend.addEventListener('click', sendMessage);
+aiInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+    const message = aiInput.value.trim();
+    if (!message) return;
+
+    // Display user message
+    addMessage(message, 'user');
+    aiInput.value = '';
+
+    // Get AI response
+    const response = getAIResponse(message);
+    setTimeout(() => {
+        addMessage(response, 'bot');
+        // Auto speak response
+        speakResponse(response);
+    }, 300);
+}
+
+function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `ai-message ${ sender }`;
+    msgDiv.textContent = text;
+    aiChat.appendChild(msgDiv);
+    aiChat.scrollTop = aiChat.scrollHeight;
+}
+
+function getAIResponse(input) {
+    const lower = input.toLowerCase();
+    for (const [key, response] of Object.entries(aiResponses)) {
+        if (lower.includes(key)) return response;
     }
+    return aiResponses.default;
+}
 
-    // 6. Contact Form Validation & Mock Submission
-    const contactForm = document.getElementById("contact-form");
-    const statusMsg = document.getElementById("form-status-message");
+// Voice input
+aiVoice.addEventListener('click', () => {
+    if (isListening) {
+        recognition.stop();
+        isListening = false;
+        aiVoice.style.opacity = '1';
+    } else {
+        recognition.start();
+        isListening = true;
+        aiVoice.style.opacity = '0.5';
+    }
+});
 
-    if (contactForm && statusMsg) {
-        contactForm.addEventListener("submit", (e) => {
-            e.preventDefault();
+recognition.onresult = (event) => {
+    let transcript = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+    }
+    aiInput.value = transcript;
+};
 
-            const name = document.getElementById("form-name").value.trim();
-            const email = document.getElementById("form-email").value.trim();
-            const subject = document.getElementById("form-subject").value.trim();
-            const message = document.getElementById("form-message").value.trim();
-            const submitBtn = document.getElementById("form-submit-btn");
+recognition.onend = () => {
+    isListening = false;
+    aiVoice.style.opacity = '1';
+};
 
-            // Simple client-side checks
-            if (!name || !email || !subject || !message) {
-                showStatus("Please fill in all inputs before submitting.", "error");
-                return;
+// Voice output
+const synth = window.speechSynthesis;
+
+function speakResponse(text) {
+    if (!synth) return;
+    synth.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    synth.speak(utterance);
+}
+
+// Navigation
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const target = e.target.getAttribute('href');
+        if (target.startsWith('#')) {
+            const section = document.querySelector(target);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+    });
+});
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showStatus("Please provide a valid email format.", "error");
-                return;
-            }
+// Contact Form
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
 
-            // Simulate form submission loader
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-            statusMsg.className = "form-status";
-            statusMsg.textContent = "";
-
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-                
-                showStatus("Thank you! Your message has been sent successfully.", "success");
-                contactForm.reset();
-            }, 1800);
-        });
+    if (name && email && message) {
+        alert(`Thank you, ${ name }! Your message has been received. I'll get back to you soon!`);
+        e.target.reset();
     }
+});
 
-    function showStatus(text, type) {
-        if (!statusMsg) return;
-        statusMsg.textContent = text;
-        statusMsg.className = `form-status ${type}`;
-    }
-
-    // 7. Back-to-Top Widget Trigger
-    const backToTopBtn = document.getElementById("back-to-top-btn");
-
-    if (backToTopBtn) {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add("show");
-            } else {
-                backToTopBtn.classList.remove("show");
-            }
-        });
-
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    }
-
-    // 8. ScrollReveal Initializations
-    if (typeof ScrollReveal !== "undefined") {
-        ScrollReveal().reveal('.reveal', {
-            delay: 150,
-            distance: '30px',
-            origin: 'bottom',
-            duration: 800,
-            interval: 150,
-            easing: 'cubic-bezier(0.5, 0, 0, 1)',
-            mobile: true
-        });
-    }
+// Initialize on load
+window.addEventListener('load', () => {
+    initThreeJS();
+    addMessage("Hi! I'm Ramani's AI Assistant. Ask me anything about my portfolio!", 'bot');
 });
