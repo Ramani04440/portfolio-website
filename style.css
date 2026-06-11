@@ -397,6 +397,7 @@ main {
 .about-photo {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex: 0 0 350px;
@@ -421,9 +422,8 @@ main {
 }
 
 .photo-badge {
-    position: absolute;
-    bottom: -15px;
-    right: 10px;
+    position: relative;
+    top: -10px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     padding: 0.75rem 1.5rem;
