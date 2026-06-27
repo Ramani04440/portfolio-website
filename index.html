@@ -3,483 +3,690 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramani S - Interactive 3D Portfolio</title>
-    <meta name="description" content="Interactive 3D portfolio with AI assistant - Ramani S, CS Engineering Student & Full Stack Developer">
+    <title>Ramani S — Software Engineer | Full Stack | AI/ML | IEEE Chairperson</title>
+    <meta name="description" content="Portfolio of Ramani S — Computer Science Engineer, Full Stack Developer, AI/ML Enthusiast, IEEE Reliability Society Chairperson. CGPA 8.43.">
+    <meta name="keywords" content="Ramani S, Software Engineer, Full Stack Developer, Java, Python, TensorFlow, IEEE Chairperson, Portfolio">
+    <meta name="author" content="Ramani S">
+    <meta property="og:title" content="Ramani S — Software Engineer & IEEE Chairperson">
+    <meta property="og:description" content="Premium portfolio of Ramani S — Full Stack Developer, AI/ML Engineer, IEEE Chairperson.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- 3D Canvas Background -->
-    <canvas id="canvas3d"></canvas>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-cube"></i> Ramani S
-            </div>
-            <ul class="nav-menu">
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">
+                <div class="logo-hex">R</div>
+                <span>Ramani S</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#leadership" class="nav-link">Leadership</a></li>
+                <li><a href="#achievements" class="nav-link">Awards</a></li>
+                <li><a href="#certifications" class="nav-link">Certs</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-btn" id="theme-btn" title="Toggle theme">
+                    <i class="fa-solid fa-moon" id="theme-icon"></i>
+                </button>
+                <a href="mailto:ramani04122005@gmail.com" class="btn btn-outline btn-sm">
+                    <i class="fa-solid fa-envelope"></i> Contact
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- AI Assistant Button -->
-    <button class="ai-toggle" id="aiToggle" title="Open AI Assistant">
-        <i class="fas fa-robot"></i>
-    </button>
-
-    <!-- AI Chat Panel -->
-    <div class="ai-panel hidden" id="aiPanel">
-        <div class="ai-header">
-            <h3>AI Assistant</h3>
-            <button class="close-btn" id="closeAI"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="ai-chat" id="aiChat"></div>
-        <div class="ai-input-row">
-            <input type="text" id="aiInput" placeholder="Ask me anything..." class="ai-input">
-            <button id="aiSend" class="ai-send-btn"><i class="fas fa-paper-plane"></i></button>
-            <button id="aiVoice" class="ai-voice-btn" title="Voice input"><i class="fas fa-microphone"></i></button>
-        </div>
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-drawer hidden" id="mobile-drawer">
+        <ul>
+            <li><a href="#about" class="drawer-link">About</a></li>
+            <li><a href="#skills" class="drawer-link">Skills</a></li>
+            <li><a href="#experience" class="drawer-link">Experience</a></li>
+            <li><a href="#projects" class="drawer-link">Projects</a></li>
+            <li><a href="#leadership" class="drawer-link">Leadership</a></li>
+            <li><a href="#achievements" class="drawer-link">Awards</a></li>
+            <li><a href="#certifications" class="drawer-link">Certifications</a></li>
+            <li><a href="#contact" class="drawer-link">Contact</a></li>
+            <li><a href="mailto:ramani04122005@gmail.com" class="drawer-link drawer-resume"><i class="fa-solid fa-envelope"></i> Get In Touch</a></li>
+        </ul>
     </div>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="gradient-text">Ramani S</span>
-                </h1>
-                <p class="hero-subtitle">Full Stack Developer • AI Enthusiast • Problem Solver</p>
-                <p class="hero-desc">Building elegant solutions with code, AI, and creativity</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-inner">
+            <div class="hero-text" data-aos>
+                <div class="hero-tag">
+                    <span class="dot-pulse"></span>
+                    Available for opportunities
+                </div>
+                <h1 class="hero-name">Hi, I'm <span class="gradient-text">Ramani S</span></h1>
+                <div class="hero-typing-wrap">
+                    <span class="hero-typing-prefix">I'm a </span>
+                    <span class="hero-typing" id="hero-typing"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-desc">
+                    I'm a passionate <strong>Computer Science Engineering student</strong> specializing in <strong>Full Stack Development, AI/ML, Cloud Computing, and Automation</strong>. I love building real-world systems that solve meaningful problems with clean code and measurable impact. Currently in my <strong>Final Year</strong> at Sairam Engineering College.
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary magnetic">
+                        <i class="fa-solid fa-rocket"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-glow magnetic">
+                        <i class="fa-solid fa-paper-plane"></i> Hire Me
+                    </a>
+                    <a href="#contact" class="btn btn-outline magnetic">
+                        <i class="fa-solid fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/Ramani04440" target="_blank" class="social-pill" title="GitHub">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank" class="social-pill" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                    </a>
+
+                    <a href="mailto:ramani04122005@gmail.com" class="social-pill" title="Email">
+                        <i class="fa-solid fa-envelope"></i> Email
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="section about" id="about">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-grid">
-                    <div class="about-photo">
-                        <img src="./profile.jpg" alt="Ramani S - CS Engineering Student" class="profile-image">
+            <div class="hero-right" data-aos data-aos-delay="150">
+                <div class="hero-card-stack">
+                    <div class="stat-float stat-f1">
+                        <span class="stat-num counter" data-target="843" data-float="true">8.43</span>
+                        <span>CGPA</span>
                     </div>
-                    <div class="about-content">
-                        <p>I'm a passionate Computer Science Engineering student in my final year, driven by curiosity and innovation. I specialize in full-stack development, AI/ML, and creating innov[...]
-                        <p>With hands-on experience in web development, database management, and machine learning, I love transforming complex problems into elegant solutions. My goal is to contribute[...]
-                        <div class="social-links">
-                            <a href="https://github.com/Ramani04440" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://linkedin.com/in/ramani-s-149579282" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="mailto:ramani04122005@gmail.com"><i class="fas fa-envelope"></i></a>
-                        </div>
-                        <div class="about-cards">
-                            <div class="feature-card">
-                                <i class="fas fa-code"></i>
-                                <h4>Clean Code</h4>
-                                <p>Writing maintainable, efficient code</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-brain"></i>
-                                <h4>AI/ML</h4>
-                                <p>Deep learning & neural networks</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-rocket"></i>
-                                <h4>Full Stack</h4>
-                                <p>Frontend to backend excellence</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-palette"></i>
-                                <h4>UI/UX Design</h4>
-                                <p>Beautiful & intuitive interfaces</p>
-                            </div>
-                        </div>
+                    <div class="stat-float stat-f2">
+                        <span class="stat-num counter" data-target="2" data-suffix="">0</span>
+                        <span>Internships</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="section skills" id="skills">
-            <div class="container">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3><i class="fas fa-laptop-code"></i> Languages</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span>Java</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Python</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>JavaScript</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>SQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="stat-float stat-f3">
+                        <span class="stat-num counter" data-target="6" data-suffix="">0</span>
+                        <span>NPTEL Certs</span>
                     </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-palette"></i> Frontend</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span>HTML5 & CSS3</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>React / Vue</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>UI/UX Design</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="stat-float stat-f4">
+                        <span class="stat-num counter" data-target="5" data-suffix="+">0</span>
+                        <span>Prizes Won</span>
                     </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-server"></i> Backend & Tools</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span>Spring Boot</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>MySQL & MongoDB</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Git & GitHub</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
-                                </div>
-                            </div>
+                    <div class="hero-avatar-ring">
+                        <div class="hero-avatar">
+                            <i class="fa-solid fa-user-astronaut"></i>
                         </div>
+                        <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+                        <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
                     </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-brain"></i> AI & ML</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span>TensorFlow & Keras</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Deep Learning</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Data Analysis</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="hero-badge-ieee">
+                        <i class="fa-solid fa-crown"></i> IEEE Chairperson
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="hero-scroll-hint">
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section class="section projects" id="projects">
-            <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
-                            <i class="fas fa-brain"></i>
+    <!-- ══ ABOUT ══ -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">Who I Am</span>
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-photo-col" data-aos>
+                    <div class="about-photo-wrap">
+                        <div class="about-avatar-lg">
+                            <i class="fa-solid fa-user-astronaut"></i>
                         </div>
-                        <div class="project-content">
-                            <h3>NeuroStrata</h3>
-                            <p>AI-powered Skin Cancer Detection System using deep CNNs</p>
-                            <div class="project-tags">
-                                <span>Python</span>
-                                <span>TensorFlow</span>
-                                <span>FastAPI</span>
-                            </div>
-                            <a href="https://github.com/Ramani04440/NeuroStrata" target="_blank" class="project-link">
-                                View Project <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+                        <div class="about-photo-badges">
+                            <span class="aphoto-badge b-ieee"><i class="fa-solid fa-crown"></i> IEEE Chairperson</span>
 
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>NavTrack</h3>
-                            <p>Driving School Management System with booking & scheduling</p>
-                            <div class="project-tags">
-                                <span>Java</span>
-                                <span>Spring Boot</span>
-                                <span>MySQL</span>
-                            </div>
-                            <a href="https://github.com/Ramani04440/NavTrack" target="_blank" class="project-link">
-                                View Project <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
-                            <i class="fas fa-pencil-alt"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>Online Exam System</h3>
-                            <p>Secure multi-role examination platform with auto grading</p>
-                            <div class="project-tags">
-                                <span>Java</span>
-                                <span>REST APIs</span>
-                                <span>MySQL</span>
-                            </div>
-                            <a href="https://github.com/Ramani04440/Online-Quiz-System" target="_blank" class="project-link">
-                                View Project <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>3D Portfolio</h3>
-                            <p>Interactive 3D portfolio with AI assistant and live background</p>
-                            <div class="project-tags">
-                                <span>HTML5</span>
-                                <span>Three.js</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <a href="#" class="project-link">
-                                Current Project <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <span class="aphoto-badge b-gpa"><i class="fa-solid fa-star"></i> CGPA 8.43</span>
+                            <span class="aphoto-badge b-avail"><i class="fa-solid fa-circle"></i> Available</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="about-content-col" data-aos data-aos-delay="100">
+                    <h3 class="about-name">Ramani S</h3>
+                    <p class="about-role-tag"><i class="fa-solid fa-terminal"></i> Final Year CSE · Full Stack · AI/ML · Cloud</p>
+                    <p class="about-para">I'm a passionate <strong>Computer Science Engineering Final Year student</strong> specializing in <strong>Full Stack Development, AI/ML, Cloud Computing, and Automation</strong>. I love building real-world systems that solve meaningful problems with clean code and measurable impact.</p>
+                    <p class="about-para">As the <strong>IEEE Reliability Society Chairperson</strong> at Sairam Engineering College (since Jan 2026), I lead a growing community of student innovators.</p>
+                    <p class="about-para">My internship experience spans production-grade full-stack systems — reducing manual work by up to <strong>70%</strong> and administrative overhead by <strong>60%</strong>. I'm driven to keep building, leading, and learning.</p>
+                    <div class="about-info-grid">
+                        <div class="ainfo"><i class="fa-solid fa-graduation-cap"></i><div><strong>Sairam Engineering College</strong><span>B.E. CSE — Final Year</span></div></div>
+                        <div class="ainfo"><i class="fa-solid fa-location-dot"></i><div><strong>Chennai, Tamil Nadu</strong><span>India</span></div></div>
+                        <div class="ainfo"><i class="fa-solid fa-envelope"></i><div><strong>ramani04122005@gmail.com</strong><span>Email</span></div></div>
+                        <div class="ainfo"><i class="fa-solid fa-star"></i><div><strong>8.43 CGPA</strong><span>Academic Standing</span></div></div>
+                    </div>
+                    <div class="about-socials">
+                        <a href="https://github.com/Ramani04440" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="mailto:ramani04122005@gmail.com"><i class="fa-solid fa-envelope"></i></a>
 
-        <!-- Experience Section -->
-        <section class="section experience" id="experience">
-            <div class="container">
-                <h2 class="section-title">Experience</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Fullstack Developer Intern</h3>
-                            <p class="company">ONEYES INFOTECH SOLUTIONS • Chennai</p>
-                            <p class="date">Jun 2025 – Jul 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SKILLS ══ -->
+    <section class="section section-alt" id="skills">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">What I Know</span>
+                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+                <p class="section-sub">Technologies I work with across the full stack</p>
+            </div>
+
+            <!-- Skill Category Tiles -->
+            <div class="skill-tiles" data-aos>
+
+                <div class="stile stile-lang">
+                    <div class="stile-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <div class="stile-label">Programming</div>
+                    <div class="stile-chips">
+                        <span><i class="fa-brands fa-java"></i> Java</span>
+                        <span><i class="fa-brands fa-python"></i> Python</span>
+                        <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <span><i class="fa-solid fa-database"></i> SQL</span>
+                    </div>
+                </div>
+
+                <div class="stile stile-front">
+                    <div class="stile-icon"><i class="fa-solid fa-display"></i></div>
+                    <div class="stile-label">Frontend</div>
+                    <div class="stile-chips">
+                        <span><i class="fa-brands fa-react"></i> React.js</span>
+                        <span><i class="fa-brands fa-html5"></i> HTML5</span>
+                        <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                        <span><i class="fa-brands fa-figma"></i> Figma</span>
+                    </div>
+                </div>
+
+                <div class="stile stile-back">
+                    <div class="stile-icon"><i class="fa-solid fa-server"></i></div>
+                    <div class="stile-label">Backend</div>
+                    <div class="stile-chips">
+                        <span><i class="fa-solid fa-leaf"></i> Django</span>
+                        <span><i class="fa-solid fa-gear"></i> Spring Boot</span>
+                        <span><i class="fa-solid fa-plug"></i> REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="stile stile-cloud">
+                    <div class="stile-icon"><i class="fa-solid fa-cloud"></i></div>
+                    <div class="stile-label">Cloud &amp; Tools</div>
+                    <div class="stile-chips">
+                        <span><i class="fa-brands fa-aws"></i> AWS</span>
+                        <span><i class="fa-brands fa-google"></i> Google Cloud</span>
+                        <span><i class="fa-brands fa-git-alt"></i> Git</span>
+                        <span><i class="fa-solid fa-robot"></i> UiPath</span>
+                    </div>
+                </div>
+
+                <div class="stile stile-ai">
+                    <div class="stile-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="stile-label">AI &amp; ML</div>
+                    <div class="stile-chips">
+                        <span><i class="fa-solid fa-microchip"></i> TensorFlow</span>
+                        <span><i class="fa-solid fa-eye"></i> OpenCV</span>
+                        <span><i class="fa-solid fa-flask"></i> Scikit-learn</span>
+                        <span><i class="fa-solid fa-wand-magic-sparkles"></i> Generative AI</span>
+                    </div>
+                </div>
+
+                <div class="stile stile-db">
+                    <div class="stile-icon"><i class="fa-solid fa-database"></i></div>
+                    <div class="stile-label">Databases</div>
+                    <div class="stile-chips">
+                        <span><i class="fa-solid fa-table"></i> MySQL</span>
+                        <span><i class="fa-solid fa-cubes"></i> NoSQL</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ EXPERIENCE ══ -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">Where I've Worked</span>
+                <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
+            </div>
+            <div class="exp-timeline">
+
+                <div class="exp-card" data-aos>
+                    <div class="exp-dot exp-dot-cyan"></div>
+                    <div class="exp-body">
+                        <div class="exp-meta">
+                            <div>
+                                <h3>Full Stack Developer Intern</h3>
+                                <p class="exp-company"><i class="fa-solid fa-building"></i> Oneyes Infotech Solutions <span>• Anna Nagar, Chennai</span></p>
+                            </div>
+                            <span class="exp-date-pill">Jun – Jul 2025</span>
+                        </div>
+                        <p class="exp-project"><i class="fa-solid fa-diagram-project"></i> Online Examination &amp; Quiz Management System</p>
+                        <ul class="exp-list">
+                            <li>Designed and developed a full-stack web application for online examination management — enabling structured, secure, and scalable assessments.</li>
+                            <li>Implemented role-based authorization for admins, faculty, and students with exam scheduling and dynamic question control.</li>
+                            <li>Integrated backend logic and database operations, reducing <strong>manual assessment effort by 70%</strong>.</li>
+                            <li>Participated across full SDLC: requirement analysis, development, testing, and deployment.</li>
+                        </ul>
+                        <div class="exp-metrics-row">
+                            <div class="metric-pill"><i class="fa-solid fa-arrow-trend-down"></i> 70% less manual assessment</div>
+                            <div class="metric-pill"><i class="fa-solid fa-shield-halved"></i> Secure auth system</div>
+                            <div class="metric-pill"><i class="fa-solid fa-users-cog"></i> Multi-role access</div>
+                        </div>
+                        <div class="exp-tech-row">
+                            <span>Java</span><span>REST APIs</span><span>MySQL</span><span>HTML/CSS</span><span>JavaScript</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="exp-card" data-aos>
+                    <div class="exp-dot exp-dot-purple"></div>
+                    <div class="exp-body">
+                        <div class="exp-meta">
+                            <div>
+                                <h3>Full Stack Developer Intern</h3>
+                                <p class="exp-company"><i class="fa-solid fa-building"></i> Vulture Management Wings Pvt Ltd <span>• Anna Nagar, Chennai</span></p>
+                            </div>
+                            <span class="exp-date-pill">December 2025</span>
+                        </div>
+                        <p class="exp-project"><i class="fa-solid fa-diagram-project"></i> Driving School Management System</p>
+                        <ul class="exp-list">
+                            <li>Built a management system automating student registration, course scheduling, and instructor allocation for a driving school.</li>
+                            <li>Integrated RESTful APIs for dynamic data management within structured SDLC workflows.</li>
+                            <li>Delivered responsive UIs cutting <strong>administrative overhead by 60%</strong>.</li>
+                            <li>Gained practical full-stack development experience aligned with industry practices.</li>
+                        </ul>
+                        <div class="exp-metrics-row">
+                            <div class="metric-pill"><i class="fa-solid fa-arrow-trend-down"></i> 60% less admin overhead</div>
+                            <div class="metric-pill"><i class="fa-solid fa-calendar-check"></i> Auto scheduling</div>
+                            <div class="metric-pill"><i class="fa-solid fa-plug"></i> REST API integration</div>
+                        </div>
+                        <div class="exp-tech-row">
+                            <span>Java</span><span>Spring Boot</span><span>MySQL</span><span>REST APIs</span><span>HTML/CSS</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ PROJECTS ══ -->
+    <section class="section section-alt" id="projects">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">What I've Built</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+            </div>
+            <div class="projects-bento">
+
+                <div class="p-card p-featured" data-aos>
+                    <div class="p-card-glow"></div>
+                    <div class="p-top">
+                        <div class="p-badges">
+                            <span class="pbadge pb-feat"><i class="fa-solid fa-star"></i> Featured</span>
+                            <span class="pbadge pb-ai">AI / ML</span>
+                        </div>
+                        <a href="https://github.com/Ramani04440/NeuroStrata" target="_blank" class="p-gh-link"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <h3>Skin Cancer Detection System</h3>
+                    <p>AI-powered dermatological diagnosis using deep CNNs to detect potential malignancies from skin images — assisting clinical specialists with high accuracy and real-time inference.</p>
+                    <ul class="p-features">
+                        <li><i class="fa-solid fa-check"></i> CNN-based multi-class image classification</li>
+                        <li><i class="fa-solid fa-check"></i> Transfer learning with EfficientNet</li>
+                        <li><i class="fa-solid fa-check"></i> FastAPI backend for real-time inference</li>
+                    </ul>
+                    <div class="p-tags"><span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>Scikit-learn</span><span>FastAPI</span></div>
+                    <button class="cs-toggle" data-target="cs1"><i class="fa-solid fa-book-open"></i> Case Study</button>
+                    <div class="cs-panel hidden" id="cs1">
+                        <strong>Challenge:</strong> Building a reliable classifier with limited labeled medical data.<br>
+                        <strong>Solution:</strong> Transfer learning + OpenCV augmentation pipeline for high sensitivity.<br>
+                        <strong>Impact:</strong> Early-stage detection assistance for dermatologists.
+                    </div>
+                </div>
+
+                <div class="p-card" data-aos data-aos-delay="80">
+                    <div class="p-card-glow"></div>
+                    <div class="p-top">
+                        <span class="pbadge pb-fs">Full Stack</span>
+                    </div>
+                    <h3>Smart Farm Management Portal</h3>
+                    <p>Agricultural portal enabling farmers to monitor soil data, manage crops, and schedule irrigation — reducing wastage through data-driven decisions.</p>
+                    <ul class="p-features">
+                        <li><i class="fa-solid fa-check"></i> Real-time soil monitoring dashboard</li>
+                        <li><i class="fa-solid fa-check"></i> Django REST backend</li>
+                        <li><i class="fa-solid fa-check"></i> MySQL relational data layer</li>
+                    </ul>
+                    <div class="p-tags"><span>HTML/CSS/JS</span><span>Django</span><span>MySQL</span></div>
+                    <button class="cs-toggle" data-target="cs2"><i class="fa-solid fa-book-open"></i> Case Study</button>
+                    <div class="cs-panel hidden" id="cs2">
+                        <strong>Challenge:</strong> Bridging IoT sensor data with farm management decisions.<br>
+                        <strong>Solution:</strong> Django portal with real-time MySQL sensor data visualization.<br>
+                        <strong>Impact:</strong> Reduces water & resource waste for farmers.
+                    </div>
+                </div>
+
+                <div class="p-card" data-aos data-aos-delay="120">
+                    <div class="p-card-glow"></div>
+                    <div class="p-top">
+                        <span class="pbadge pb-iot">IoT</span>
+                    </div>
+                    <h3>Wearable for Menstrual Pain</h3>
+                    <p>IoT-based wearable device monitoring abdominal temperature and muscle tension, delivering targeted heat therapy using embedded sensors.</p>
+                    <ul class="p-features">
+                        <li><i class="fa-solid fa-check"></i> Embedded sensor integration</li>
+                        <li><i class="fa-solid fa-check"></i> Automated heat therapy cycles</li>
+                        <li><i class="fa-solid fa-check"></i> Real-time biometric feedback</li>
+                    </ul>
+                    <div class="p-tags"><span>IoT</span><span>Sensors</span><span>Embedded</span><span>Python</span></div>
+                    <button class="cs-toggle" data-target="cs3"><i class="fa-solid fa-book-open"></i> Case Study</button>
+                    <div class="cs-panel hidden" id="cs3">
+                        <strong>Challenge:</strong> Non-invasive, low-cost wearable with accurate sensors.<br>
+                        <strong>Solution:</strong> Microcontroller-driven adaptive heat therapy triggered by sensor readings.<br>
+                        <strong>Impact:</strong> Drug-free menstrual pain management alternative.
+                    </div>
+                </div>
+
+                <div class="p-card" data-aos data-aos-delay="160">
+                    <div class="p-card-glow"></div>
+                    <div class="p-top">
+                        <span class="pbadge pb-fs">Full Stack</span>
+                        <a href="https://github.com/Ramani04440/Online-Quiz-System" target="_blank" class="p-gh-link"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <h3>Online Examination System</h3>
+                    <p>Secure multi-role (Admin / Faculty / Student) exam platform with automated grading, time-controlled sessions, and result analytics dashboards.</p>
+                    <ul class="p-features">
+                        <li><i class="fa-solid fa-check"></i> Role-based access control (RBAC)</li>
+                        <li><i class="fa-solid fa-check"></i> Automated grading pipeline</li>
+                        <li><i class="fa-solid fa-check"></i> 70% reduction in manual work</li>
+                    </ul>
+                    <div class="p-tags"><span>Java</span><span>REST APIs</span><span>MySQL</span><span>HTML/JS</span></div>
+                    <button class="cs-toggle" data-target="cs4"><i class="fa-solid fa-book-open"></i> Case Study</button>
+                    <div class="cs-panel hidden" id="cs4">
+                        <strong>Challenge:</strong> Fraud-resistant high-concurrency exam platform.<br>
+                        <strong>Solution:</strong> JWT auth + session-locked exams + server-side grading with MySQL transactions.<br>
+                        <strong>Impact:</strong> Deployed at OneYes Infotech — 70% less manual assessment.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ LEADERSHIP ══ -->
+    <section class="section" id="leadership">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">Beyond Code</span>
+                <h2 class="section-title">Leadership & <span class="gradient-text">Community</span></h2>
+            </div>
+            <div class="lead-grid">
+
+                <div class="lead-card lc-ieee" data-aos>
+                    <div class="lc-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="lc-content">
+                        <div class="lc-top">
+                            <h3>IEEE Reliability Society SBC</h3>
+                            <span class="lc-current">Chairperson</span>
+                        </div>
+                        <p class="lc-org">Sairam Engineering College Student Branch</p>
+                        <div class="lc-journey">
+                            <span class="lc-now">Chairperson <em>Jan 2026–</em></span>
+                        </div>
+                        <div class="lc-desc">
                             <ul>
-                                <li>Designed Full Stack web app for online examinations with secure authentication</li>
-                                <li>Integrated backend logic and database operations for exam management</li>
-                                <li>Followed SDLC methodologies across development lifecycle</li>
+                            <li>Led technical workshops, seminars, and IEEE events driving community impact.</li>
+                            <li>Received <strong>IEEE Best Student Volunteer Award 2025</strong>.</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lead-card lc-yuci" data-aos data-aos-delay="80">
+                    <div class="lc-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="lc-content">
+                        <div class="lc-top">
+                            <h3>YUCI Sairam</h3>
+                            <span class="lc-current">Campus Coordinator</span>
+                        </div>
+                        <p class="lc-org">Youth Community Innovation Cell</p>
+                        <div class="lc-journey">
+                            <span class="lc-past">Department Head <em>2023</em></span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span class="lc-now">Campus Coordinator <em>2024–</em></span>
+                        </div>
+                        <div class="lc-desc">
+                            <ul>
+                                <li>Promoted from Department Head to Campus Coordinator.</li>
+                                <li>Organized innovation events, ideathons, and inter-departmental competitions.</li>
                             </ul>
                         </div>
                     </div>
+                </div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Fullstack Developer Intern</h3>
-                            <p class="company">VULTURE MANAGEMENT WINGS PVT LTD • Chennai</p>
-                            <p class="date">Dec 2025</p>
-                            <ul>
-                                <li>Built management system for student registration and course scheduling</li>
-                                <li>Integrated RESTful APIs for efficient data management</li>
-                                <li>Implemented real-world SDLC best practices</li>
-                            </ul>
+                <div class="lead-card lc-auto" data-aos data-aos-delay="160">
+                    <div class="lc-icon"><i class="fa-solid fa-robot"></i></div>
+                    <div class="lc-content">
+                        <div class="lc-top">
+                            <h3>UiAutomistix Sairam</h3>
+                            <span class="lc-current">Technical Coordinator</span>
                         </div>
+                        <p class="lc-org">Automation &amp; RPA Club</p>
+                        <ul>
+                            <li>Coordinated RPA technical sessions using UiPath and automation tools.</li>
+                            <li>Organized hands-on workshops on workflow engineering and automation.</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Achievements Section -->
-        <section class="section achievements" id="achievements">
-            <div class="container">
-                <h2 class="section-title">Achievements & Extra-Curriculars</h2>
-                <div class="achievements-list">
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>IEEE Best Student Volunteer Award</h3>
-                            <p>Recognized for outstanding leadership & contributions to IEEE activities — 2025</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>NPTEL STAR – Motivated Learner</h3>
-                            <p>Awarded for consistent performance and dedication to online learning</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>NPTEL STAR – Discipline Star</h3>
-                            <p>Recognized for exemplary discipline and commitment across NPTEL courses</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>E-Cell IIT Bombay – Campus Ambassador</h3>
-                            <p>Promoted entrepreneurship initiatives and student engagement</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>IEEE CS SYP HIZE 2.0 – Outreach Team Member</h3>
-                            <p>Assisted in outreach & event promotion; supported participant engagement — Jun-Dec 2024</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>Youth United Council of India – Campus Coordinator & Dept Head</h3>
-                            <p>Engaged 600+ members, recruited 100+ volunteers, led design & content teams — Oct 2024-Feb 2025</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>IEEE Reliability Society – Design Lead</h3>
-                            <p>Created posters, invitations, certificates; led design team for high-quality event materials — Oct-Dec 2025</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>UiAutomistix Sairam – Technical Coordinator</h3>
-                            <p>Managed events end-to-end, led members, and produced event materials — Mar 2024–Present</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <h3>IEEE Reliability Society – Chairperson</h3>
-                            <p>Leading executive & operational teams in planning and executing IEEE activities — Jan 2026–Present</p>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ ACHIEVEMENTS ══ -->
+    <section class="section section-alt" id="achievements">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">Recognitions</span>
+                <h2 class="section-title">Achievements & <span class="gradient-text">Awards</span></h2>
+            </div>
+            <div class="ach-grid">
+                <div class="ach-card ac-gold" data-aos><div class="ac-icon"><i class="fa-solid fa-medal"></i></div><div><h4>1st Prize — Meme Tastic</h4><p>Won first place in creative competition at college symposium.</p><span class="ac-tag">🥇 1st Place</span></div></div>
+                <div class="ach-card ac-gold" data-aos data-aos-delay="40"><div class="ac-icon"><i class="fa-solid fa-trophy"></i></div><div><h4>1st Prize — Vecna's Vision</h4><p>Secured first place in design challenge.</p><span class="ac-tag">🥇 1st Place</span></div></div>
+                <div class="ach-card ac-gold" data-aos data-aos-delay="80"><div class="ac-icon"><i class="fa-solid fa-palette"></i></div><div><h4>1st Prize — Design Levitation</h4><p>Won first prize in UI/UX competition.</p><span class="ac-tag">🥇 1st Place</span></div></div>
+                <div class="ach-card ac-purple" data-aos data-aos-delay="120"><div class="ac-icon"><i class="fa-solid fa-code"></i></div><div><h4>DSA Challenge — Round 1 Winner</h4><p>Won Round 1 of the Data Structures &amp; Algorithms competitive challenge.</p><span class="ac-tag">🏆 Winner</span></div></div>
+                <div class="ach-card ac-cyan" data-aos><div class="ac-icon"><i class="fa-solid fa-star"></i></div><div><h4>IEEE Best Student Volunteer Award</h4><p>Recognized by IEEE for exceptional volunteer contributions in 2025.</p><span class="ac-tag">📌 IEEE 2025</span></div></div>
+                <div class="ach-card ac-orange" data-aos data-aos-delay="40"><div class="ac-icon"><i class="fa-solid fa-graduation-cap"></i></div><div><h4>NPTEL Discipline Star</h4><p>Outstanding performance across <strong>6 NPTEL certifications</strong> — Elite ranks.</p><span class="ac-tag">⭐ Discipline Star</span></div></div>
+                <div class="ach-card ac-green" data-aos data-aos-delay="80"><div class="ac-icon"><i class="fa-solid fa-certificate"></i></div><div><h4>NPTEL Motivated Learner</h4><p>Recognized for consistently appearing in 8+ exams over 4 semesters with a high pass rate.</p><span class="ac-tag">🎓 NPTEL Star</span></div></div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="certifications">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">Credentials</span>
+                <h2 class="section-title">Certifi<span class="gradient-text">cations</span></h2>
+                <p class="section-sub">15 completed certifications across Cloud, AI, Data Science, and Core CS</p>
+            </div>
+            <div class="cert-full-grid">
+
+                <!-- Cloud & AI -->
+                <div class="cert-group" data-aos>
+                    <div class="cert-group-label"><i class="fa-solid fa-cloud"></i> Cloud &amp; AI</div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-aws"><i class="fa-brands fa-aws"></i></div><div class="cert-info"><h4>AWS Cloud Practitioner Essentials</h4><p>Amazon Web Services</p></div><span class="cert-badge">✓ Done</span></div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-oracle"><i class="fa-solid fa-microchip"></i></div><div class="cert-info"><h4>Oracle OCI AI Foundations Associate</h4><p>Oracle · 2025</p></div><span class="cert-badge">✓ Done</span></div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-server"></i></div><div class="cert-info"><h4>Cloud Computing</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                </div>
+
+                <!-- Networking & Python -->
+                <div class="cert-group" data-aos data-aos-delay="80">
+                    <div class="cert-group-label"><i class="fa-solid fa-network-wired"></i> Networking</div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-cisco"><i class="fa-solid fa-network-wired"></i></div><div class="cert-info"><h4>Networking Basics</h4><p>Cisco Networking Academy</p></div><span class="cert-badge">✓ Done</span></div>
+                    <div class="cert-group-label" style="margin-top:14px"><i class="fa-brands fa-python"></i> Python &amp; Data Science</div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-chart-line"></i></div><div class="cert-info"><h4>Python for Data Science</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-udemy"><i class="fa-brands fa-python"></i></div><div class="cert-info"><h4>Python DSA</h4><p>Udemy</p></div><span class="cert-badge cb-udemy">Udemy</span></div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-linkedin"><i class="fa-brands fa-linkedin-in"></i></div><div class="cert-info"><h4>Python in Excel</h4><p>LinkedIn Learning</p></div><span class="cert-badge cb-li">LinkedIn</span></div>
+                    <div class="cert-group-label" style="margin-top:14px"><i class="fa-solid fa-users-cog"></i> Leadership</div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-linkedin"><i class="fa-brands fa-linkedin-in"></i></div><div class="cert-info"><h4>Project Management Skills for Leaders</h4><p>LinkedIn Learning</p></div><span class="cert-badge cb-li">LinkedIn</span></div>
+                    <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-scale-balanced"></i></div><div class="cert-info"><h4>Intellectual Property</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                </div>
+
+                <!-- Core CS — full width -->
+                <div class="cert-group cert-group-wide" data-aos>
+                    <div class="cert-group-label"><i class="fa-solid fa-microchip"></i> Core Computer Science &nbsp;<span class="cert-count-badge">⭐ 6 NPTEL · Discipline Star</span></div>
+                    <div class="cert-cs-grid">
+                        <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-memory"></i></div><div class="cert-info"><h4>Computer Architecture</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                        <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-diagram-project"></i></div><div class="cert-info"><h4>Design &amp; Analysis of Algorithms</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                        <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-terminal"></i></div><div class="cert-info"><h4>Operating System Fundamentals</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                        <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-code"></i></div><div class="cert-info"><h4>Compiler Design</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                        <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-bug-slash"></i></div><div class="cert-info"><h4>Software Testing</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
+                        <div class="cert-row"><div class="cert-icon-wrap ci-nptel"><i class="fa-solid fa-wifi"></i></div><div class="cert-info"><h4>Introduction to IoT</h4><p>NPTEL</p></div><span class="cert-badge cb-nptel">NPTEL</span></div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section class="section contact" id="contact">
-            <div class="container">
-                <h2 class="section-title">Let's Connect</h2>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Get in Touch</h3>
-                        <p>I'm always open to new opportunities and interesting projects. Feel free to reach out!</p>
-                        <div class="contact-links">
-                            <a href="mailto:ramani04122005@gmail.com" class="contact-link">
-                                <i class="fas fa-envelope"></i>
-                                <span>ramani04122005@gmail.com</span>
-                            </a>
-                            <a href="https://github.com/Ramani04440" target="_blank" class="contact-link">
-                                <i class="fab fa-github"></i>
-                                <span>github.com/Ramani04440</span>
-                            </a>
-                            <a href="https://linkedin.com/in/ramani-s-149579282" target="_blank" class="contact-link">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Profile</span>
-                            </a>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos>
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+                <p class="section-sub">Open to internships, full-time roles, collaborations, and interesting projects.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info" data-aos>
+                    <h3>Reach Me At</h3>
+                    <div class="contact-items">
+                        <a href="mailto:ramani04122005@gmail.com" class="ci-item">
+                            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div><strong>Email</strong><span>ramani04122005@gmail.com</span></div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank" class="ci-item">
+                            <div class="ci-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                            <div><strong>LinkedIn</strong><span>linkedin.com/in/ramani-s</span></div>
+                        </a>
+                        <a href="https://github.com/Ramani04440" target="_blank" class="ci-item">
+                            <div class="ci-icon"><i class="fa-brands fa-github"></i></div>
+                            <div><strong>GitHub</strong><span>github.com/Ramani04440</span></div>
+                        </a>
+
                     </div>
-
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                    <a href="mailto:ramani04122005@gmail.com" class="contact-resume-btn">
+                        <i class="fa-solid fa-envelope"></i> Email Me Directly
+                    </a>
                 </div>
+                <form class="contact-form" id="contact-form" data-aos data-aos-delay="80" novalidate>
+                    <div class="cf-row">
+                        <input type="text" id="cf-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="cf-row">
+                        <input type="email" id="cf-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="cf-row">
+                        <input type="text" id="cf-subject" placeholder="Subject (optional)">
+                    </div>
+                    <div class="cf-row">
+                        <textarea id="cf-message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="cf-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
+                    <p class="cf-feedback" id="cf-feedback"></p>
+                </form>
             </div>
-        </section>
+        </div>
+    </section>
+
     </main>
 
-    <!-- Footer -->
+    <!-- ══ FOOTER ══ -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Ramani S. All rights reserved. Built with passion and code.</p>
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <div class="logo-hex">R</div>
+                <span>Ramani S</span>
+            </div>
+            <p class="footer-tagline">IEEE Chairperson · Full Stack Developer · AI/ML Engineer</p>
+            <div class="footer-socials">
+                <a href="https://github.com/Ramani04440" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/ramani-s-149579282" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="mailto:ramani04122005@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+
+            </div>
+            <p class="footer-copy">© 2026 Ramani S — Built with passion &amp; code.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Back to Top -->
+    <button class="back-top hidden" id="back-top" title="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+    <!-- AI Assistant Float -->
+    <button class="ai-fab" id="ai-fab" title="Ask AI Assistant">
+        <i class="fa-solid fa-robot"></i>
+        <span class="ai-fab-pulse"></span>
+    </button>
+    <div class="ai-panel hidden" id="ai-panel">
+        <div class="ai-panel-header">
+            <div class="ai-panel-title"><i class="fa-solid fa-robot"></i> Ramani AI Assistant</div>
+            <button class="ai-panel-close" id="ai-panel-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="ai-chat" id="ai-chat">
+            <div class="ai-msg ai-bot">
+                <div class="ai-av"><i class="fa-solid fa-robot"></i></div>
+                <div class="ai-bubble">👋 Hi! Ask me about Ramani's projects, skills, IEEE role, certifications, or how to contact him!</div>
+            </div>
+        </div>
+        <div class="ai-suggests" id="ai-suggests">
+            <button class="ai-sug" data-q="What are his projects?">Projects</button>
+            <button class="ai-sug" data-q="Tell me about IEEE role">IEEE</button>
+            <button class="ai-sug" data-q="What are his skills?">Skills</button>
+            <button class="ai-sug" data-q="How can I contact him?">Contact</button>
+        </div>
+        <div class="ai-input-row">
+            <input type="text" id="ai-input" placeholder="Ask anything..." autocomplete="off">
+            <button id="ai-send"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
